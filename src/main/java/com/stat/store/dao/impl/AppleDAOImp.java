@@ -131,11 +131,28 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
                 if (jsonApp.get("version") != null)
                     app.setVersion((String) jsonApp.get("version"));
                 if (jsonApp.get("screenshotUrls") != null){
-                    app.setScreenShot1(((JSONArray)jsonApp.get("screenshotUrls")).get(0)+"");
-                    app.setScreenShot2(((JSONArray)jsonApp.get("screenshotUrls")).get(1)+"");
-                    app.setScreenShot3(((JSONArray)jsonApp.get("screenshotUrls")).get(2)+"");
-                    app.setScreenShot4(((JSONArray)jsonApp.get("screenshotUrls")).get(3)+"");
-                    app.setScreenShot5(((JSONArray)jsonApp.get("screenshotUrls")).get(4)+"");
+                    JSONArray screenshots = (JSONArray) jsonApp.get("screenshotUrls");
+                    if(screenshots.size() == 1){
+                        app.setScreenShot1(((JSONArray)jsonApp.get("screenshotUrls")).get(0)+"");
+                    }else if(screenshots.size() == 2){
+                        app.setScreenShot1(((JSONArray)jsonApp.get("screenshotUrls")).get(0)+"");
+                        app.setScreenShot2(((JSONArray)jsonApp.get("screenshotUrls")).get(1)+"");
+                    }else if(screenshots.size() == 3){
+                        app.setScreenShot1(((JSONArray)jsonApp.get("screenshotUrls")).get(0)+"");
+                        app.setScreenShot2(((JSONArray)jsonApp.get("screenshotUrls")).get(1)+"");
+                        app.setScreenShot3(((JSONArray)jsonApp.get("screenshotUrls")).get(2)+"");
+                    }else if(screenshots.size() == 4){
+                        app.setScreenShot1(((JSONArray)jsonApp.get("screenshotUrls")).get(0)+"");
+                        app.setScreenShot2(((JSONArray)jsonApp.get("screenshotUrls")).get(1)+"");
+                        app.setScreenShot3(((JSONArray)jsonApp.get("screenshotUrls")).get(2)+"");
+                        app.setScreenShot4(((JSONArray)jsonApp.get("screenshotUrls")).get(3)+"");
+                    }else if(screenshots.size() == 5){
+                        app.setScreenShot1(((JSONArray)jsonApp.get("screenshotUrls")).get(0)+"");
+                        app.setScreenShot2(((JSONArray)jsonApp.get("screenshotUrls")).get(1)+"");
+                        app.setScreenShot3(((JSONArray)jsonApp.get("screenshotUrls")).get(2)+"");
+                        app.setScreenShot4(((JSONArray)jsonApp.get("screenshotUrls")).get(3)+"");
+                        app.setScreenShot5(((JSONArray)jsonApp.get("screenshotUrls")).get(4)+"");
+                    }
                 }
 
             }

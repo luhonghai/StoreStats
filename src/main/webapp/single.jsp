@@ -62,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-9 movie_box">
                     <div class="grid images_3_of_2">
                         <div class="movie_image">
-                            <span class="movie_rating"><%=app.getAverageUserRating()%></span>
+                            <span class="movie_rating"><%=app.getAverageUserRating() != null? app.getAverageUserRating() : "0.0"%></span>
                             <img src="<%=app.getArtworkUrl()%>" class="img-search" alt=""/>
                         </div>
                         <div class="movie_rate">
@@ -89,31 +89,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                     <div class="desc1 span_3_of_2">
-                        <p class="movie_option"><strong>Country: </strong><a href="#">established</a>, <a href="#">USA</a></p>
+                        <p class="movie_option"><strong>Name: </strong><%=app.getTrackName() != null? app.getTrackName() : ""%></p>
 
-                        <p class="movie_option"><strong>Year: </strong>2014</p>
+                        <p class="movie_option"><strong>Company: </strong><%=app.getSellerName() != null? app.getSellerName() : ""%></p>
 
-                        <p class="movie_option"><strong>Category: </strong><a href="#">Adventure</a>, <a href="#">Fantazy</a></p>
+                        <p class="movie_option"><strong>Version: </strong><%=app.getVersion() != null? app.getVersion() : ""%></p>
 
-                        <p class="movie_option"><strong>Release date: </strong>December 12, 2014</p>
+                        <p class="movie_option"><strong>Release date: </strong><%=app.getReleaseDate() != null? app.getReleaseDate() : ""%></p>
+                        <%  String price;
+                            if(app.getPrice() > 0){
+                                price = app.getPrice() + "$";
+                            }else{
+                                price = "free";
+                            }%>
+                        <p class="movie_option"><strong>Price: </strong><%=price%></p>
+                        <%  String rating;
+                            if(app.getAverageUserRating() != null){
+                                rating = app.getAverageUserRating();
+                            }else{
+                                rating = "0.0";
+                            }%>
+                        <p class="movie_option"><strong>Rating: </strong><%=rating%></p>
 
-                        <p class="movie_option"><strong>Director: </strong><a href="#">suffered </a></p>
-
-                        <p class="movie_option"><strong>Actors: </strong><a href="#">anything</a>, <a href="#">Lorem Ipsum</a>, <a
-                                href="#" discovered></a>, <a href="#"> Virginia</a>, <a href="#"> Virginia</a>, <a href="#">variations</a>,
-                            <a href="#">variations</a>, <a href="#">variations</a>, <a href="#"> Virginia</a> <a href="#">...</a>
-                        </p>
-
-                        <p class="movie_option"><strong>Age restriction: </strong>13</p>
-
-                        <div class="down_btn"><a class="btn1" href="#"><span> </span>Download</a></div>
+                        <div class="down_btn"><a class="btn1" href="#"><span> </span>Follow</a></div>
                     </div>
                     <div class="clearfix"></div>
-                    <p class="m_4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                        alteration in some form, by injected humour, or randomised words which don't look even slightly
-                        believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything
-                        embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat
-                        predefined chunks as necessary, making this the first true generator on the Internet.</p>
+                    <p class="m_4"><%=app.getDescription() != null? app.getDescription() : ""%></p>
 
                     <form method="post" action="contact-post.html">
                         <div class="to">
