@@ -13,8 +13,8 @@ import java.util.List;
 @Remote
 public interface ReviewAppleDAO extends IDAO<ReviewIOs, Integer>{
 
-    public List<ReviewIOs> getReviewFromService(String url, AppIOs app);
+    public List<ReviewIOs> getReviewFromService(String url, AppIOs app);// get from service
 
-    public List<ReviewIOs> getReviewByTrackId(String track_id);
+    public List<ReviewIOs> getReviewByTrackId(String track_id);//get from local
 
 }

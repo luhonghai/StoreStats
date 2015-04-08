@@ -24,4 +24,10 @@ public interface AppleDAO extends IDAO<AppIOs, Integer>{
 
     public List<AppIOs> getAppsBySeller(String artist_id);
 
+    public boolean checkExistedApp(String track_id);
+
+    public boolean deleteAppById(String track_id);
+
+    public List<AppIOs> getAppsByUserId(int user_id);
+
 }

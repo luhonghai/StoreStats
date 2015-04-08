@@ -11,6 +11,8 @@ import java.util.List;
 @Remote
 public interface ReviewAndroidDAO extends IDAO<ReviewAndroid,Integer> {
 
-    public List<ReviewAndroid> getCommentByAppId(String app_id);
+    public List<ReviewAndroid> getCommentByAppId(String app_id); //get server
+
+    public List<ReviewAndroid> getReviewsByAppid(String app_id);  //get from local
 
 }

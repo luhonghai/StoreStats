@@ -8,6 +8,11 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "App_Android", schema = "", catalog = "store_stats")
+@NamedQueries({
+        @NamedQuery(name = "Android.CheckExisted", query = "select a from AppAndroid a where a.appId = :appId"),
+        @NamedQuery(name = "Android.UnFollow", query = "delete from AppAndroid a where a.appId = :appId"),
+        @NamedQuery(name = "Android.GetAppOfUser", query = "select a from AppAndroid a where a.userId = :user_id")
+})
 public class AppAndroid implements Serializable{
     private int id;
     private int userId;

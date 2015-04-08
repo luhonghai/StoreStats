@@ -186,4 +186,26 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
         return (List<AppIOs>)getEm().createNamedQuery("AppIOS.GetAppBySellerID")
                 .setParameter("artistId", artist_id).getResultList();
     }
+
+    @Override
+    public boolean checkExistedApp(String track_id) {
+        if(getAppByTrackId(track_id) != null){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteAppById(String track_id) {
+        int result = getEm().createNamedQuery("AppIOS.UnFollow").setParameter("trackId", track_id).executeUpdate();
+        if(result > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public List<AppIOs> getAppsByUserId(int user_id) {
+        return (List<AppIOs>)getEm().createNamedQuery("AppIOS.GetAppOfUser").setParameter("user_id", user_id).getResultList();
+    }
 }

@@ -2,6 +2,7 @@ package com.stat.store.service;
 
 import com.stat.store.dao.AppleDAO;
 import com.stat.store.entity.AppIOs;
+import com.stat.store.exception.DAOException;
 import com.stat.store.util.JNDILookUpClass;
 
 import javax.ejb.EJB;
@@ -37,5 +38,21 @@ public class AppleService {
     public AppIOs getAppDetail(String track_id){
         String url = "https://itunes.apple.com/lookup?id="+track_id;
         return appleDAO.getAppDetailService(url);
+    }
+
+    public AppIOs followApp(AppIOs app) throws DAOException{
+        return appleDAO.save(app);
+    }
+
+    public boolean unfollowById(String track_id){
+        return appleDAO.deleteAppById(track_id);
+    }
+
+    public boolean checkExisted(String track_id){
+        return appleDAO.checkExistedApp(track_id);
+    }
+
+    public List<AppIOs> getFollowedAppsOfUser(int user_id){
+        return appleDAO.getAppsByUserId(user_id);
     }
 }

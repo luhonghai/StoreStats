@@ -11,6 +11,13 @@ import java.util.List;
 @Remote
 public interface AndroidDAO extends IDAO<AppAndroid, Integer> {
 
-    public List<AppAndroid> searchByName(String name);
+    public List<AppAndroid> searchByName(String name);// from service
 
+    public boolean checkExistedApp(String appId);
+
+    public AppAndroid getAppById(String appId);
+
+    public boolean deleteAppById(String appId);
+
+    public List<AppAndroid> getAppsByUserId(int user_id);// from local
 }

@@ -64,4 +64,32 @@ public class AndroidDAOImp extends AbstractDAO<AppAndroid, Integer> implements A
         session.flush();
         return list;
     }
+
+    @Override
+    public boolean checkExistedApp(String appId) {
+        if(getAppById(appId) != null){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public AppAndroid getAppById(String appId) {
+        return (AppAndroid)getEm().createNamedQuery("Android.CheckExisted")
+                .setParameter("appId", appId).getSingleResult();
+    }
+
+    @Override
+    public boolean deleteAppById(String appId) {
+        int result = getEm().createNamedQuery("Android.UnFollow").setParameter("appId", appId).executeUpdate();
+        if(result > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public List<AppAndroid> getAppsByUserId(int user_id) {
+        return (List<AppAndroid>)getEm().createNamedQuery("Android.GetAppOfUser").setParameter("user_id", user_id).getResultList();
+    }
 }

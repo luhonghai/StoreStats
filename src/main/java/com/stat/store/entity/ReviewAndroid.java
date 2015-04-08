@@ -8,6 +8,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "Review_Android", schema = "", catalog = "store_stats")
+@NamedQueries({
+        @NamedQuery(name= "Review.GetByAppId", query = "select r from ReviewAndroid r where r.appId = :appId")
+})
 public class ReviewAndroid implements Serializable {
     private int id;
     private String appId;

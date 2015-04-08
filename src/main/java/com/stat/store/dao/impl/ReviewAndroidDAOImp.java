@@ -56,4 +56,10 @@ public class ReviewAndroidDAOImp extends AbstractDAO<ReviewAndroid, Integer> imp
         session.flush();
         return list;
     }
+
+    @Override
+    public List<ReviewAndroid> getReviewsByAppid(String app_id) {
+        return (List<ReviewAndroid>)getEm().createNamedQuery("Review.GetByAppId")
+                .setParameter("appId", app_id).getResultList();
+    }
 }
