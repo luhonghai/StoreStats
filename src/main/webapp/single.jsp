@@ -1,10 +1,19 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ page import="com.stat.store.service.AppleService" %>
 <%@ page import="com.stat.store.entity.AppIOs" %>
+<%@ page import="com.stat.store.entity.User" %>
 <%
-    String track_id = request.getParameter("track_id");
+    String account = "guest";
+    boolean isExisted = false;
     AppleService appleService = new AppleService();
+    User member = (User)session.getAttribute("member");
+    String track_id = request.getParameter("track_id");
+    if(member != null){
+        account = "member";
+        isExisted = appleService.checkExisted(track_id, member.getId());
+    }
     AppIOs app = appleService.getAppDetail(track_id);
+
 %>
 <html>
 <head>
@@ -111,7 +120,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             }%>
                         <p class="movie_option"><strong>Rating: </strong><%=rating%></p>
 
-                        <div class="down_btn"><a class="btn1" href="#"><span> </span>Follow</a></div>
+                        <%if(isExisted){%>
+                            <div class="down_btn"><a class="btn1" id="btnUnFollow" trackid="<%=app.getTrackId()%>"><span> </span>Unfollow</a></div>
+                        <%}else{%>
+                            <div class="down_btn"><a class="btn1" id="btnFollow" trackid="<%=app.getTrackId()%>"><span> </span>Follow</a></div>
+                        <%}%>
+
                     </div>
                     <div class="clearfix"></div>
                     <p class="m_4"><%=app.getDescription() != null? app.getDescription() : ""%></p>
@@ -313,4 +327,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </footer>
 </div>
 </body>
+<script>
+$(document).ready(function(){
+    var account = "<%=account%>";
+
+    $("#btnUnFollow").click(function(){
+        if(account == "guest"){
+            alert("Please sign in before doing this");
+        }else{
+            var track_id = $(this).attr("trackid");
+            $.ajax({
+                type: "POST",
+                url: "AppIOSHandler",
+                data: "track_id="+track_id+"&action=unfollow",
+                success: function(result){
+                    if(result == "done"){
+                        $("#btnUnFollow").attr("id", "btnFollow");
+                        $("#btnFollow").html("<span> </span>Follow");
+                    }else{
+                        alert("There is an error while processing data");
+                    }
+                },
+                dataType: "text"
+            });
+        }
+    });
+
+    $("#btnFollow").click(function(){
+        if(account == "guest"){
+            alert("Please sign in before doing this");
+        }else{
+            var track_id = $(this).attr("trackid");
+            $.ajax({
+                type: "POST",
+                url: "AppIOSHandler",
+                data: "track_id="+track_id+"&action=follow",
+                success: function(result){
+                    if(result == "done"){
+                        $("#btnFollow").attr("id", "btnUnFollow");
+                        $("#btnUnFollow").html("<span> </span>Unfollow");
+                    }else{
+                        alert("There is an error while processing data");
+                    }
+                },
+                dataType: "text"
+            });
+        }
+    });
+});
+</script>
 </html>

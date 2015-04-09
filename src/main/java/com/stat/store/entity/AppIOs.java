@@ -13,8 +13,9 @@ import java.io.Serializable;
         @NamedQuery(name = "AppIOS.GetAppByAppName", query = "select a from AppIOs a where a.trackName = :trackName"),
         @NamedQuery(name = "AppIOS.GetAppByTrackID", query = "select a from AppIOs a where a.trackId = :trackId"),
         @NamedQuery(name = "AppIOS.GetAppBySellerID",query = "select a from AppIOs a where a.artistId = :artistId"),
-        @NamedQuery(name = "AppIOS.UnFollow", query = "delete from AppIOs a where a.trackId = :trackId"),
-        @NamedQuery(name = "AppIOS.GetAppOfUser", query = "select a from AppIOs a where a.userId = :user_id")
+        @NamedQuery(name = "AppIOS.UnFollow", query = "delete from AppIOs a where a.trackId = :trackId and a.userId = :user_id"),
+        @NamedQuery(name = "AppIOS.GetAppOfUser", query = "select a from AppIOs a where a.userId = :user_id"),
+        @NamedQuery(name = "AppIOS.CheckExisted", query = "select a from AppIOs a where a.trackId = :track_id and a.userId = :user_id")
 })
 public class AppIOs implements Serializable {
     private int id;

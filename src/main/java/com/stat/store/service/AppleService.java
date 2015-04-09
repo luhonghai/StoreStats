@@ -44,12 +44,12 @@ public class AppleService {
         return appleDAO.save(app);
     }
 
-    public boolean unfollowById(String track_id){
-        return appleDAO.deleteAppById(track_id);
+    public boolean unfollowById(String track_id, int user_id){
+        return appleDAO.deleteAppById(track_id, user_id);
     }
 
-    public boolean checkExisted(String track_id){
-        return appleDAO.checkExistedApp(track_id);
+    public boolean checkExisted(String track_id, int user_id){
+        return appleDAO.checkExistedApp(track_id, user_id);
     }
 
     public List<AppIOs> getFollowedAppsOfUser(int user_id){

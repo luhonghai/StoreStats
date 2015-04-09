@@ -113,10 +113,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h1 class="m_2">Featurd Movies</h1>
 
                 <div class="search">
-                    <form>
-                        <input type="text" value="Search..." onfocus="this.value='';"
-                               onblur="if (this.value == '') {this.value ='';}">
-                        <input type="submit" value="">
+                    <form action="search.jsp" method="GET">
+                        <input type="text" value="Search..." name="q" style="margin-bottom: -15px;" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+                        <input type="submit" value="" style="top:20%;">
                     </form>
                 </div>
                 <div class="clearfix"></div>

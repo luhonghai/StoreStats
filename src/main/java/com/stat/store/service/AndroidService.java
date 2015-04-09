@@ -43,12 +43,12 @@ public class AndroidService {
         androidDAO.delete(app);
     }
 
-    public boolean unfollowAppById(String appId){
-        return androidDAO.deleteAppById(appId);
+    public boolean unfollowAppById(String appId, int user_id){
+        return androidDAO.deleteAppById(appId, user_id);
     }
 
-    public boolean checkExisted(String appId){
-        return androidDAO.checkExistedApp(appId);
+    public boolean checkExisted(String appId, int user_id){
+        return androidDAO.checkExistedApp(appId, user_id);
     }
 
     public List<AppAndroid> getFollowedAppsOfUser(int user_id){

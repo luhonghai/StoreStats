@@ -66,22 +66,26 @@ public class AndroidDAOImp extends AbstractDAO<AppAndroid, Integer> implements A
     }
 
     @Override
-    public boolean checkExistedApp(String appId) {
-        if(getAppById(appId) != null){
+    public boolean checkExistedApp(String appId, int user_id) {
+        try{
+            AppAndroid app = (AppAndroid)getEm().createNamedQuery("Android.CheckExisted").setParameter("appId", appId)
+                    .setParameter("userId", user_id).getSingleResult();
             return true;
+        }catch(Exception e){
+            return false;
         }
-        return false;
     }
 
     @Override
     public AppAndroid getAppById(String appId) {
-        return (AppAndroid)getEm().createNamedQuery("Android.CheckExisted")
+        return (AppAndroid)getEm().createNamedQuery("Android.GetAppById")
                 .setParameter("appId", appId).getSingleResult();
     }
 
     @Override
-    public boolean deleteAppById(String appId) {
-        int result = getEm().createNamedQuery("Android.UnFollow").setParameter("appId", appId).executeUpdate();
+    public boolean deleteAppById(String appId, int user_id) {
+        int result = getEm().createNamedQuery("Android.UnFollow").setParameter("appId", appId)
+                .setParameter("userId", user_id).executeUpdate();
         if(result > 0){
             return true;
         }

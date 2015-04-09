@@ -13,11 +13,11 @@ public interface AndroidDAO extends IDAO<AppAndroid, Integer> {
 
     public List<AppAndroid> searchByName(String name);// from service
 
-    public boolean checkExistedApp(String appId);
+    public boolean checkExistedApp(String appId, int user_id);
 
     public AppAndroid getAppById(String appId);
 
-    public boolean deleteAppById(String appId);
+    public boolean deleteAppById(String appId, int user_id);
 
     public List<AppAndroid> getAppsByUserId(int user_id);// from local
 }

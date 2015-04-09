@@ -66,6 +66,7 @@ public class UserHandler extends HttpServlet {
         } catch (DAOException e) {
             e.printStackTrace();
         } finally{
+            if(out != null)
             out.close();
         }
     }
