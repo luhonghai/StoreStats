@@ -1,8 +1,10 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ page import="com.stat.store.entity.AppIOs" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.stat.store.entity.User" %>
 <%
     String keyword = request.getParameter("q");
+    User member = (User)session.getAttribute("member");
     com.stat.store.service.AppleService appleService = new com.stat.store.service.AppleService();
     List<AppIOs> iOSList = appleService.searchByKeyword(keyword);
     System.out.println("List size: " + iOSList.size());
@@ -51,7 +53,11 @@
             <div class="col-sm-3 header_right">
                 <ul class="header_right_box">
                     <li><img src="images/p1.png" alt=""/></li>
-                    <li><p><a href="login.jsp">Carol Varois</a></p></li>
+                    <%if(member != null){%>
+                    <li><p><a href="#"><%=member.getFirstname()%> <%=member.getLastname()%></a></p></li>
+                    <%}else{%>
+                    <li><p><a href="#">Guest</a></p></li>
+                    <%}%>
                     <li class="last"><i class="edit"> </i></li>
                     <div class="clearfix"></div>
                 </ul>

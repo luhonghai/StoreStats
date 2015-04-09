@@ -1,11 +1,15 @@
+<%@ page import="com.stat.store.entity.User" %>
 <%@ page pageEncoding="UTF-8" %>
+<%
+    User member = (User)session.getAttribute("member");
+%>
 <html>
 <head>
     <title>Movie_store A Entertainment Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Movie_store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+            Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -26,7 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 nav: true,
                 speed: 500,
                 namespace: "callbacks",
-                pager: true,
+                pager: true
             });
         });
     </script>
@@ -55,8 +59,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-sm-3 header_right">
                 <ul class="header_right_box">
                     <li><img src="images/p1.png" alt=""/></li>
-                    <li><p><a href="login.jsp">Carol Varois</a></p></li>
-                    <li class="last"><i class="edit"> </i></li>
+                    <%if(member != null){%>
+                        <li><p><a href="#"><%=member.getFirstname()%> <%=member.getLastname()%></a></p></li>
+                    <%}else{%>
+                        <li><p><a href="#">Guest</a></p></li>
+                    <%}%>
+                    <li class="last"><a href="login.jsp"><i class="edit"> </i></a></li>
                     <div class="clearfix"></div>
                 </ul>
             </div>

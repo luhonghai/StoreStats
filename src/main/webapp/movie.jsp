@@ -1,4 +1,8 @@
+<%@ page import="com.stat.store.entity.User" %>
 <%@ page pageEncoding="UTF-8" %>
+<%
+    User member = (User)session.getAttribute("member");
+%>
 <html>
 <head>
     <title>Movie_store A Entertainment Category Flat Bootstarp Resposive Website Template | Movie :: w3layouts</title>
@@ -43,7 +47,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-sm-3 header_right">
                 <ul class="header_right_box">
                     <li><img src="images/p1.png" alt=""/></li>
-                    <li><p><a href="login.jsp">Carol Varois</a></p></li>
+                    <%if(member != null){%>
+                    <li><p><a href="#"><%=member.getFirstname()%> <%=member.getLastname()%></a></p></li>
+                    <%}else{%>
+                    <li><p><a href="#">Guest</a></p></li>
+                    <%}%>
                     <li class="last"><i class="edit"> </i></li>
                     <div class="clearfix"></div>
                 </ul>
