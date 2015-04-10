@@ -31,6 +31,12 @@ public class AppAndroid implements Serializable{
     private String promotionText;
     private String category;
     private String appType;
+    private String artworkUrl;
+    private String screenShot1;
+    private String screenShot2;
+    private String screenShot3;
+    private String screenShot4;
+    private String screenShot5;
 
     @Id
     @Column(name = "Id")
@@ -240,5 +246,65 @@ public class AppAndroid implements Serializable{
         result = 31 * result + (category != null ? category.hashCode() : 0);
         result = 31 * result + (appType != null ? appType.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "ArtworkUrl")
+    public String getArtworkUrl() {
+        return artworkUrl;
+    }
+
+    public void setArtworkUrl(String artworkUrl) {
+        this.artworkUrl = artworkUrl;
+    }
+
+    @Basic
+    @Column(name = "ScreenShot1")
+    public String getScreenShot1() {
+        return screenShot1;
+    }
+
+    public void setScreenShot1(String screenShot1) {
+        this.screenShot1 = screenShot1;
+    }
+
+    @Basic
+    @Column(name = "ScreenShot2")
+    public String getScreenShot2() {
+        return screenShot2;
+    }
+
+    public void setScreenShot2(String screenShot2) {
+        this.screenShot2 = screenShot2;
+    }
+
+    @Basic
+    @Column(name = "ScreenShot3")
+    public String getScreenShot3() {
+        return screenShot3;
+    }
+
+    public void setScreenShot3(String screenShot3) {
+        this.screenShot3 = screenShot3;
+    }
+
+    @Basic
+    @Column(name = "ScreenShot4")
+    public String getScreenShot4() {
+        return screenShot4;
+    }
+
+    public void setScreenShot4(String screenShot4) {
+        this.screenShot4 = screenShot4;
+    }
+
+    @Basic
+    @Column(name = "ScreenShot5")
+    public String getScreenShot5() {
+        return screenShot5;
+    }
+
+    public void setScreenShot5(String screenShot5) {
+        this.screenShot5 = screenShot5;
     }
 }

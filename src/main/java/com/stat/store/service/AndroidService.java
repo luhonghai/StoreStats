@@ -35,6 +35,10 @@ public class AndroidService {
         return androidDAO.searchByName(keyword);
     }
 
+    public AppAndroid getAppFromServiceByPackageName(String package_name){
+        return androidDAO.searchByPackageName(package_name);
+    }
+
     public AppAndroid followApp(AppAndroid app) throws DAOException{
         return androidDAO.save(app);
     }

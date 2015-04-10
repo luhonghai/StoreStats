@@ -2,12 +2,19 @@
 <%@ page import="com.stat.store.entity.AppIOs" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.stat.store.entity.User" %>
+<%@ page import="com.stat.store.service.AppleService" %>
+<%@ page import="com.stat.store.service.AndroidService" %>
+<%@ page import="com.stat.store.entity.AppAndroid" %>
 <%
     String keyword = request.getParameter("q");
     User member = (User)session.getAttribute("member");
-    com.stat.store.service.AppleService appleService = new com.stat.store.service.AppleService();
+    AppleService appleService = new AppleService();
     List<AppIOs> iOSList = appleService.searchByKeyword(keyword);
-    System.out.println("List size: " + iOSList.size());
+    System.out.println("List ios size: " + iOSList.size());
+    System.out.println("----------------------------");
+    AndroidService androidService = new AndroidService();
+    List<AppAndroid> androidList = androidService.getAppsFromService(keyword);
+    System.out.println("List android size: " + androidList.size());
     System.out.println("----------------------------");
 %>
 <html>
@@ -27,6 +34,8 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- start plugins -->
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.hashchange.min.js" type="text/javascript"></script>
+    <script src="js/jquery.easytabs.js" type="text/javascript"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -67,69 +76,147 @@
         <div class="content">
             <h2 class="m_3">Now in the Movie</h2>
                 <div class="movie_top">
-                    <div class="col-md-9 movie_box">
-                        <!-- Movie variant with time -->
-                        <%
-                            if(iOSList != null && iOSList.size()>0){
-                                for(int i=0; i<iOSList.size(); i++){ %>
+                    <div id="tab-full-container" class='tab-container col-md-9'>
+                        <div class='etabs'>
+                            <span class='tab' id="tab-1"><a href="#tabs2-ios">iOS</a></span>
+                            <span class='tab' id="tab-2"><a href="#tabs2-android">Android</a></span>
+                        </div>
+                        <div class='panel-container'>
+                            <div id="tabs2-ios" class="movie_box">
+                                <h2>iOS Application</h2>
+                                <div>
+                                    <!-- Movie variant with time -->
+                                    <%
+                                        if(iOSList != null && iOSList.size()>0){
+                                            for(int i=0; i<iOSList.size(); i++){ %>
 
-                                <div class="movie movie-test movie-test-dark <%if(i%2==0){%>movie-test-left<%}else{%>movie-test-right<%}%>">
-                                    <div class="movie__images">
-                                        <a href="single.jsp?track_id=<%=iOSList.get(i).getTrackId()%>" class="movie-beta__link">
-                                            <img alt="" src="<%=iOSList.get(i).getArtworkUrl()%>" class="img-search" alt=""/>
-                                        </a>
+                                    <div class="movie movie-test movie-test-dark <%if(i%2==0){%>movie-test-left<%}else{%>movie-test-right<%}%>">
+                                        <div class="movie__images">
+                                            <a href="single.jsp?track_id=<%=iOSList.get(i).getTrackId()%>" class="movie-beta__link">
+                                                <img alt="" src="<%=iOSList.get(i).getArtworkUrl()%>" class="img-search" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="movie__info">
+                                            <%  String name;
+                                                if(iOSList.get(i).getTrackName().length()>20){
+                                                    name = iOSList.get(i).getTrackName().substring(0,19)+"...";
+                                                }else{
+                                                    name = iOSList.get(i).getTrackName();
+                                                }%>
+                                            <a href="single.jsp?track_id=<%=iOSList.get(i).getTrackId()%>" class="movie__title"><%=name%></a>
+
+                                            <!--<p class="movie__time"><!%=iOSList.get(i).getSellerName()%></p>-->
+
+                                            <!--<p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
+                                                <a href="single.jsp">Drama</a></p>         -->
+                                            <ul class="list_6">
+                                                <li><i class="icon1"> </i>
+                                                    <%  String count;
+                                                        if(iOSList.get(i).getUserRatingCount() != null){
+                                                            count = iOSList.get(i).getUserRatingCount();
+                                                        }else{
+                                                            count = "0";
+                                                        }%>
+                                                    <p><%=count%></p></li>
+                                                <li><i class="icon3"> </i>
+                                                    <%  String price;
+                                                        if(iOSList.get(i).getPrice() > 0){
+                                                            price = iOSList.get(i).getPrice() + "$";
+                                                        }else{
+                                                            price = "free";
+                                                        }%>
+                                                    <p><%=price%></p></li>
+
+                                                <li>Rating : &nbsp;&nbsp;
+                                                    <%  String rating;
+                                                        if(iOSList.get(i).getAverageUserRating() != null){
+                                                            rating = iOSList.get(i).getAverageUserRating();
+                                                        }else{
+                                                            rating = "0.0";
+                                                        }%>
+                                                    <p><%=rating%></p></li>
+                                                <div class="clearfix"></div>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
                                     </div>
-                                    <div class="movie__info">
-                                        <%  String name;
-                                            if(iOSList.get(i).getTrackName().length()>20){
-                                            name = iOSList.get(i).getTrackName().substring(0,19)+"...";
-                                        }else{
-                                            name = iOSList.get(i).getTrackName();
-                                        }%>
-                                        <a href="single.jsp?track_id=<%=iOSList.get(i).getTrackId()%>" class="movie__title"><%=name%></a>
 
-                                        <!--<p class="movie__time"><!%=iOSList.get(i).getSellerName()%></p>-->
-
-                                        <!--<p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                            <a href="single.jsp">Drama</a></p>         -->
-                                        <ul class="list_6">
-                                            <li><i class="icon1"> </i>
-                                                <%  String count;
-                                                    if(iOSList.get(i).getUserRatingCount() != null){
-                                                        count = iOSList.get(i).getUserRatingCount();
-                                                    }else{
-                                                        count = "0";
-                                                    }%>
-                                                <p><%=count%></p></li>
-                                            <li><i class="icon3"> </i>
-                                                <%  String price;
-                                                    if(iOSList.get(i).getPrice() > 0){
-                                                        price = iOSList.get(i).getPrice() + "$";
-                                                    }else{
-                                                        price = "free";
-                                                    }%>
-                                                <p><%=price%></p></li>
-
-                                            <li>Rating : &nbsp;&nbsp;
-                                                <%  String rating;
-                                                    if(iOSList.get(i).getAverageUserRating() != null){
-                                                        rating = iOSList.get(i).getAverageUserRating();
-                                                    }else{
-                                                        rating = "0.0";
-                                                    }%>
-                                                <p><%=rating%></p></li>
-                                            <div class="clearfix"></div>
-                                        </ul>
-                                    </div>
+                                    <%}
+                                    }
+                                    %>
                                     <div class="clearfix"></div>
+                                    <!-- Movie variant with time -->
                                 </div>
+                            </div>
+                            <div id="tabs2-android" class="movie_box">
+                                <h2>Android Application</h2>
+                                <div>
+                                    <!-- Movie variant with time -->
+                                    <%
+                                        if(androidList != null && androidList.size()>0){
+                                            for(int i=0; i<androidList.size(); i++){ %>
 
-                                <%}
-                            }
-                        %>
-                        <div class="clearfix"></div>
-                        <!-- Movie variant with time -->
+                                    <div class="movie movie-test movie-test-dark <%if(i%2==0){%>movie-test-left<%}else{%>movie-test-right<%}%>">
+                                        <div class="movie__images">
+                                            <a href="single.jsp?package_name=<%=androidList.get(i).getPackageName()%>" class="movie-beta__link">
+                                                <img alt="" src="<%=androidList.get(i).getArtworkUrl()%>" class="img-search" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="movie__info">
+                                            <%  String name;
+                                                if(androidList.get(i).getTitle().length()>20){
+                                                    name = androidList.get(i).getTitle().substring(0,19)+"...";
+                                                }else{
+                                                    name = androidList.get(i).getTitle();
+                                                }%>
+                                            <a href="single.jsp?package_name=<%=androidList.get(i).getPackageName()%>" class="movie__title"><%=name%></a>
+
+                                            <!--<p class="movie__time"><!%=iOSList.get(i).getSellerName()%></p>-->
+
+                                            <!--<p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
+                                                <a href="single.jsp">Drama</a></p>         -->
+                                            <ul class="list_6">
+                                                <li><i class="icon1"> </i>
+                                                    <%  String count;
+                                                        if(androidList.get(i).getRatingCount() != null){
+                                                            count = androidList.get(i).getRatingCount();
+                                                        }else{
+                                                            count = "0";
+                                                        }%>
+                                                    <p><%=count%></p></li>
+                                                <li><i class="icon3"> </i>
+                                                    <%  String price;
+                                                        if(!androidList.get(i).getPrice().equalsIgnoreCase("")){
+                                                            price = androidList.get(i).getPrice() + "$";
+                                                        }else{
+                                                            price = "free";
+                                                        }%>
+                                                    <p><%=price%></p></li>
+
+                                                <li>Rating : &nbsp;&nbsp;
+                                                    <%  String rating;
+                                                        if(androidList.get(i).getRating() != null){
+                                                            rating = androidList.get(i).getRating();
+                                                        }else{
+                                                            rating = "0.0";
+                                                        }%>
+                                                    <p><%=rating%></p></li>
+                                                <div class="clearfix"></div>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <%}
+                                    }
+                                    %>
+                                    <div class="clearfix"></div>
+                                    <!-- Movie variant with time -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="col-md-3">
                         <div class="movie_img">
                             <div class="grid_2">
@@ -356,5 +443,18 @@
         </div>
     </footer>
 </div>
+<script>
+    $(document).ready(function(){
+        $("#tab-full-container").easytabs({
+            animate: true,
+            animationSpeed: 1000,
+            defaultTab: "span#tab-1",
+            panelActiveClass: "active-content-div",
+            tabActiveClass: "selected-tab",
+            tabs: "> div > span",
+            updateHash: false
+        });
+    });
+</script>
 </body>
 </html>
