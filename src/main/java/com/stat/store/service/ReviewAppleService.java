@@ -31,6 +31,10 @@ public class ReviewAppleService {
         }
     }
 
+    public List<ReviewIOs> getReviewsFromService(String track_id){
+        return reviewAppleDAO.getReviewFromService(track_id);
+    }
+
     public List<ReviewIOs> getReviewByAppId(String track_id) throws DAOException{
         return reviewAppleDAO.getReviewByTrackId(track_id);
     }

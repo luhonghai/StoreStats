@@ -2,10 +2,15 @@
 <%@ page import="com.stat.store.service.AppleService" %>
 <%@ page import="com.stat.store.entity.AppIOs" %>
 <%@ page import="com.stat.store.entity.User" %>
+<%@ page import="com.stat.store.entity.ReviewIOs" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.stat.store.dao.ReviewAppleDAO" %>
+<%@ page import="com.stat.store.service.ReviewAppleService" %>
 <%
     String account = "guest";
     boolean isExisted = false;
     AppleService appleService = new AppleService();
+    ReviewAppleService reviewService = new ReviewAppleService();
     User member = (User)session.getAttribute("member");
     String track_id = request.getParameter("track_id");
     if(member != null){
@@ -13,7 +18,8 @@
         isExisted = appleService.checkExisted(track_id, member.getId());
     }
     AppIOs app = appleService.getAppDetail(track_id);
-
+    List<ReviewIOs> listReview = reviewService.getReviewsFromService(track_id);
+    System.out.println("list review size: " + listReview.size());
 %>
 <html>
 <head>
@@ -134,93 +140,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="clearfix"></div>
                     <p class="m_4"><%=app.getDescription() != null? app.getDescription() : ""%></p>
 
-                    <form method="post" action="contact-post.html">
-                        <div class="to">
-                            <input type="text" class="text" value="Name" onfocus="this.value = '';"
-                                   onblur="if (this.value == '') {this.value = 'Name';}">
-                            <input type="text" class="text" value="Email" onfocus="this.value = '';"
-                                   onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:3%">
-                        </div>
-                        <div class="text">
-                            <textarea value="Message:" onfocus="this.value = '';"
-                                      onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>
-                        </div>
-                        <div class="form-submit1">
-                            <input name="submit" type="submit" id="submit" value="Submit Your Message"><br>
-                        </div>
-                        <div class="clearfix"></div>
-                    </form>
                     <div class="single">
-                        <h1>10 Comments</h1>
+                        <%if(listReview != null && listReview.size() >0){%>
+                            <h1><%=listReview.size()%> Reviews</h1>
+                        <%}else{%>
+                            <h1>No Reviews</h1>
+                        <%}%>
+
                         <ul class="single_list">
+                            <%if(listReview != null && listReview.size() >0){
+                                for(ReviewIOs review: listReview){%>
                             <li>
                                 <div class="preview"><a href="#"><img src="images/2.jpg" class="img-responsive" alt=""></a></div>
                                 <div class="data">
-                                    <div class="title">Movie / 2 hours ago / <a href="#">reply</a></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                                        quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                                        consequat.</p>
+                                    <div class="title"><%=review.getAuthor()%> / <%=review.getTitle()%> / <%=review.getUpdateDate()%></div>
+                                    <p><%=review.getMessage()%></p>
                                 </div>
                                 <div class="clearfix"></div>
                             </li>
-                            <li>
-                                <div class="preview"><a href="#"><img src="images/3.jpg" class="img-responsive" alt=""></a></div>
-                                <div class="data">
-                                    <div class="title">Wernay / 2 hours ago / <a href="#">reply</a></div>
-                                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-                                        vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-                                        dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla
-                                        facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                                        id quod mazim placerat facer possim assum. Typi non habent </p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="preview"><a href="#"><img src="images/4.jpg" class="img-responsive" alt=""></a></div>
-                                <div class="data">
-                                    <div class="title">mr.dev / 2 hours ago / <a href="#">reply</a></div>
-                                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                        Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit
-                                        litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi,
-                                        qui nunc nobis videntur parum clari, fiant sollemnes in futurum. qui sequitur mutationem
-                                        consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum
-                                        claram,</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li class="middle">
-                                <div class="preview"><a href="#"><img src="images/5.jpg" class="img-responsive" alt=""></a></div>
-                                <div class="data-middle">
-                                    <div class="title">Wernay / 2 hours ago / <a href="#">reply</a></div>
-                                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                        egestas.</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li class="last-comment">
-                                <div class="preview"><a href="#"><img src="images/6.jpg" class="img-responsive" alt=""></a></div>
-                                <div class="data-last">
-                                    <div class="title">mr.dev / 2 hours ago / <a href="#">reply</a></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                                        quis nostrud exerci tation ullamcorper suscipit </p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="preview"><a href="#"><img src="images/7.jpg" class="img-responsive" alt=""></a></div>
-                                <div class="data">
-                                    <div class="title">denpro / 2 hours ago / <a href="#">reply</a></div>
-                                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                        egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-                                        turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                                        ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                        fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et
-                                        malesuada fames ac turpis egestas.</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </li>
+                            <%}}%>
                         </ul>
                     </div>
                 </div>

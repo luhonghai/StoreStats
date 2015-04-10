@@ -28,8 +28,9 @@ public class ReviewAppleDAOImp extends AbstractDAO<ReviewIOs, Integer> implement
     }
 
     @Override
-    public List<ReviewIOs> getReviewFromService(String url, AppIOs app) {
-        //Parse XML - "http://itunes.apple.com/tr/rss/customerreviews/id=496489138/xml";
+    public List<ReviewIOs> getReviewFromService(String track_id) {
+
+        String url = "http://itunes.apple.com/tr/rss/customerreviews/id="+track_id+"/xml";
         List<ReviewIOs> reviewIOsList = new ArrayList<ReviewIOs>();
         SyndFeedInput syndFeedInput = new SyndFeedInput();
         SyndFeed syndFeed;
@@ -51,8 +52,7 @@ public class ReviewAppleDAOImp extends AbstractDAO<ReviewIOs, Integer> implement
                     review.setMessage(content.getValue());
                     review.setTitle(feed.getTitleEx().getValue());
                     review.setUpdateDate(feed.getUpdatedDate().toString());
-                    review.setTrackId(app.getTrackId());
-                    review.setBundleId(app.getBundleId());
+                    review.setTrackId(track_id);
 
 
                     List<Element> foreignMarkups = (List<Element>) feed.getForeignMarkup();

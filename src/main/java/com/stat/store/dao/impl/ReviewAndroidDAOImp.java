@@ -23,7 +23,7 @@ public class ReviewAndroidDAOImp extends AbstractDAO<ReviewAndroid, Integer> imp
 
     @Override
     public List<ReviewAndroid> getCommentByAppId(final String app_id) {
-        List<ReviewAndroid> list = new ArrayList<ReviewAndroid>();
+        final List<ReviewAndroid> list = new ArrayList<ReviewAndroid>();
         MarketSession session = new MarketSession();
 
         session.login(Common.USERNAME, Common.PASSWORD);
@@ -48,6 +48,8 @@ public class ReviewAndroidDAOImp extends AbstractDAO<ReviewAndroid, Integer> imp
                     reviewAndroid.setAuthorName(response.getComments(i).getAuthorName());
                     reviewAndroid.setRating(response.getComments(i).getRating()+"");
                     reviewAndroid.setCreationTime(response.getComments(i).getCreationTime()+"");
+
+                    list.add(reviewAndroid);
                 }
             }
         };

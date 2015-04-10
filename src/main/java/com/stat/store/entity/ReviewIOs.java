@@ -20,7 +20,6 @@ public class ReviewIOs implements Serializable {
     private String rating;
     private String version;
     private String updateDate;
-    private String bundleId;
 
     @Id
     @Column(name = "Id")
@@ -102,15 +101,6 @@ public class ReviewIOs implements Serializable {
         this.updateDate = updateDate;
     }
 
-    @Basic
-    @Column(name = "BundleId")
-    public String getBundleId() {
-        return bundleId;
-    }
-
-    public void setBundleId(String bundleId) {
-        this.bundleId = bundleId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -121,7 +111,6 @@ public class ReviewIOs implements Serializable {
 
         if (id != reviewIOs.id) return false;
         if (author != null ? !author.equals(reviewIOs.author) : reviewIOs.author != null) return false;
-        if (bundleId != null ? !bundleId.equals(reviewIOs.bundleId) : reviewIOs.bundleId != null) return false;
         if (message != null ? !message.equals(reviewIOs.message) : reviewIOs.message != null) return false;
         if (rating != null ? !rating.equals(reviewIOs.rating) : reviewIOs.rating != null) return false;
         if (title != null ? !title.equals(reviewIOs.title) : reviewIOs.title != null) return false;
@@ -142,7 +131,6 @@ public class ReviewIOs implements Serializable {
         result = 31 * result + (rating != null ? rating.hashCode() : 0);
         result = 31 * result + (version != null ? version.hashCode() : 0);
         result = 31 * result + (updateDate != null ? updateDate.hashCode() : 0);
-        result = 31 * result + (bundleId != null ? bundleId.hashCode() : 0);
         return result;
     }
 }

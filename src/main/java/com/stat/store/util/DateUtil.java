@@ -101,31 +101,8 @@ public class DateUtil {
         return dateFormat.format(date);
     }
 
-    /**
-     * Check if the booking date is in the past
-     * @param date
-     * @param days
-     * @return
-     */
-    public static boolean calculateAvailableBooking(java.sql.Date date, int days){
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DATE, days);
-
-        Calendar today = Calendar.getInstance();
-        today.setTime(today.getTime());
-
-        if(cal.before(today)){
-            return true;
-        }
-        return false;
-    }
-
-    public static String calculateBookingDate(java.sql.Date date, int days){
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DATE, days);
-        return dateFormat.format(cal.getTime());
+    public static String convertCommentDate(String date){
+        Date d = new Date(Long.parseLong(date));
+        return d.toString();
     }
 }
