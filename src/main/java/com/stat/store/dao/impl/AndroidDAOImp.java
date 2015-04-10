@@ -48,7 +48,7 @@ public class AndroidDAOImp extends AbstractDAO<AppAndroid, Integer> implements A
                         app.setAppId(response.getApp(i).getId());
                         app.setPackageName(response.getApp(i).getPackageName());
                         app.setPrice(response.getApp(i).getPrice());
-                        app.setRating(response.getApp(i).getRating());
+                        app.setRating(response.getApp(i).getRating().substring(0,3));
                         app.setRatingCount(response.getApp(i).getRatingsCount() + "");
                         app.setVersion(response.getApp(i).getVersion());
                         app.setDescription(response.getApp(i).getExtendedInfo().getDescription());
@@ -97,7 +97,7 @@ public class AndroidDAOImp extends AbstractDAO<AppAndroid, Integer> implements A
                         app.setAppId(response.getApp(i).getId());
                         app.setPackageName(response.getApp(i).getPackageName());
                         app.setPrice(response.getApp(i).getPrice());
-                        app.setRating(response.getApp(i).getRating());
+                        app.setRating(response.getApp(i).getRating().substring(0,3));
                         app.setRatingCount(response.getApp(i).getRatingsCount() + "");
                         app.setVersion(response.getApp(i).getVersion());
                         app.setDescription(response.getApp(i).getExtendedInfo().getDescription());

@@ -131,7 +131,7 @@
             <div class="box_2">
                 <div class="col-md-5 grid_3">
                     <div class="row_1">
-                        <div class="col-md-6 grid_4"><a href="single.jsp">
+                        <div class="col-md-6 grid_4"><a href="ios_detail.jsp">
                             <div class="grid_2">
                                 <img src="images/pic1.jpg" class="img-responsive" alt=""/>
 
@@ -177,19 +177,19 @@
                                     <li>Release Date : &nbsp;<span class="m_4">Mar 15, 2015</span></li>
                                     <div class="clearfix"></div>
                                 </ul>
-                                <div class="m_5"><a href="single.jsp"><img src="images/pic3.jpg" class="img-responsive"
+                                <div class="m_5"><a href="ios_detail.jsp"><img src="images/pic3.jpg" class="img-responsive"
                                                                            alt=""/></a></div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="row_2">
-                        <a href="single.jsp"><img src="images/pic4.jpg" class="img-responsive" alt=""/></a>
+                        <a href="ios_detail.jsp"><img src="images/pic4.jpg" class="img-responsive" alt=""/></a>
                     </div>
                 </div>
                 <div class="col-md-5 content_right">
                     <div class="row_3">
-                        <div class="col-md-6 content_right-box"><a href="single.jsp">
+                        <div class="col-md-6 content_right-box"><a href="ios_detail.jsp">
                             <div class="grid_2">
                                 <img src="images/pic6.jpg" class="img-responsive" alt=""/>
 
@@ -205,7 +205,7 @@
                                 </div>
                             </div>
                         </a></div>
-                        <div class="col-md-6 grid_5"><a href="single.jsp">
+                        <div class="col-md-6 grid_5"><a href="ios_detail.jsp">
                             <div class="grid_2">
                                 <img src="images/pic7.jpg" class="img-responsive" alt=""/>
 
@@ -246,13 +246,13 @@
 
                             </div>
                         </div>
-                        <div class="col-md-6 m_6"><a href="single.jsp">
+                        <div class="col-md-6 m_6"><a href="ios_detail.jsp">
                             <img src="images/pic8.jpg" class="img-responsive" alt=""/>
                         </a></div>
                     </div>
                 </div>
                 <div class="col-md-2 grid_6">
-                    <div class="m_7"><a href="single.jsp"><img src="images/pic9.jpg" class="img-responsive" alt=""/></a></div>
+                    <div class="m_7"><a href="ios_detail.jsp"><img src="images/pic9.jpg" class="img-responsive" alt=""/></a></div>
                     <div class="caption1">
                         <ul class="list_5">
                             <li><i class="icon5"> </i>
@@ -278,7 +278,7 @@
                             <li>Release : &nbsp;<span class="m_4">Mar 15, 2015</span></li>
                             <div class="clearfix"></div>
                         </ul>
-                        <div class="m_8"><a href="single.jsp"><img src="images/pic10.jpg" class="img-responsive" alt=""/></a>
+                        <div class="m_8"><a href="ios_detail.jsp"><img src="images/pic10.jpg" class="img-responsive" alt=""/></a>
                         </div>
                     </div>
                 </div>

@@ -92,7 +92,7 @@
 
                                     <div class="movie movie-test movie-test-dark <%if(i%2==0){%>movie-test-left<%}else{%>movie-test-right<%}%>">
                                         <div class="movie__images">
-                                            <a href="single.jsp?track_id=<%=iOSList.get(i).getTrackId()%>" class="movie-beta__link">
+                                            <a href="ios_detail.jsp?track_id=<%=iOSList.get(i).getTrackId()%>" class="movie-beta__link">
                                                 <img alt="" src="<%=iOSList.get(i).getArtworkUrl()%>" class="img-search" alt=""/>
                                             </a>
                                         </div>
@@ -103,12 +103,12 @@
                                                 }else{
                                                     name = iOSList.get(i).getTrackName();
                                                 }%>
-                                            <a href="single.jsp?track_id=<%=iOSList.get(i).getTrackId()%>" class="movie__title"><%=name%></a>
+                                            <a href="ios_detail.jsp?track_id=<%=iOSList.get(i).getTrackId()%>" class="movie__title"><%=name%></a>
 
                                             <!--<p class="movie__time"><!%=iOSList.get(i).getSellerName()%></p>-->
 
-                                            <!--<p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                                <a href="single.jsp">Drama</a></p>         -->
+                                            <!--<p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                                <a href="ios_detail.jsp">Drama</a></p>         -->
                                             <ul class="list_6">
                                                 <li><i class="icon1"> </i>
                                                     <%  String count;
@@ -158,7 +158,7 @@
 
                                     <div class="movie movie-test movie-test-dark <%if(i%2==0){%>movie-test-left<%}else{%>movie-test-right<%}%>">
                                         <div class="movie__images">
-                                            <a href="single.jsp?package_name=<%=androidList.get(i).getPackageName()%>" class="movie-beta__link">
+                                            <a href="android_detail.jsp?package_name=<%=androidList.get(i).getPackageName()%>&app_id=<%=androidList.get(i).getAppId()%>" class="movie-beta__link">
                                                 <img alt="" src="<%=androidList.get(i).getArtworkUrl()%>" class="img-search" alt=""/>
                                             </a>
                                         </div>
@@ -169,12 +169,12 @@
                                                 }else{
                                                     name = androidList.get(i).getTitle();
                                                 }%>
-                                            <a href="single.jsp?package_name=<%=androidList.get(i).getPackageName()%>" class="movie__title"><%=name%></a>
+                                            <a href="android_detail.jsp?package_name=<%=androidList.get(i).getPackageName()%>&app_id=<%=androidList.get(i).getAppId()%>" class="movie__title"><%=name%></a>
 
                                             <!--<p class="movie__time"><!%=iOSList.get(i).getSellerName()%></p>-->
 
-                                            <!--<p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                                <a href="single.jsp">Drama</a></p>         -->
+                                            <!--<p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                                <a href="ios_detail.jsp">Drama</a></p>         -->
                                             <ul class="list_6">
                                                 <li><i class="icon1"> </i>
                                                     <%  String count;

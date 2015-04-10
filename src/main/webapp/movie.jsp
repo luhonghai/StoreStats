@@ -65,17 +65,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!-- Movie variant with time -->
                         <div class="movie movie-test movie-test-dark movie-test-left">
                             <div class="movie__images">
-                                <a href="single.jsp" class="movie-beta__link">
+                                <a href="ios_detail.jsp" class="movie-beta__link">
                                     <img alt="" src="images/1.jpg" class="img-responsive" alt=""/>
                                 </a>
                             </div>
                             <div class="movie__info">
-                                <a href="single.jsp" class="movie__title">Ipsum (2015) </a>
+                                <a href="ios_detail.jsp" class="movie__title">Ipsum (2015) </a>
 
                                 <p class="movie__time">80 min</p>
 
-                                <p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                    <a href="single.jsp">Drama</a></p>
+                                <p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                    <a href="ios_detail.jsp">Drama</a></p>
                                 <ul class="list_6">
                                     <li><i class="icon1"> </i>
 
@@ -93,17 +93,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!-- Movie variant with time -->
                         <div class="movie movie-test movie-test-dark movie-test-left">
                             <div class="movie__images">
-                                <a href="single.jsp" class="movie-beta__link">
+                                <a href="ios_detail.jsp" class="movie-beta__link">
                                     <img alt="" src="images/2.jpg" class="img-responsive" alt=""/>
                                 </a>
                             </div>
                             <div class="movie__info">
-                                <a href="single.jsp" class="movie__title">Ipsum (2015) </a>
+                                <a href="ios_detail.jsp" class="movie__title">Ipsum (2015) </a>
 
                                 <p class="movie__time">80 min</p>
 
-                                <p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                    <a href="single.jsp">Drama</a></p>
+                                <p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                    <a href="ios_detail.jsp">Drama</a></p>
                                 <ul class="list_6">
                                     <li><i class="icon1"> </i>
 
@@ -119,17 +119,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="movie movie-test movie-test-light movie-test-right">
                             <div class="movie__images">
-                                <a href="single.jsp" class="movie-beta__link">
+                                <a href="ios_detail.jsp" class="movie-beta__link">
                                     <img alt="" src="images/3.jpg" class="img-responsive" alt=""/>
                                 </a>
                             </div>
                             <div class="movie__info">
-                                <a href="single.jsp" class="movie__title">Ipsum (2015) </a>
+                                <a href="ios_detail.jsp" class="movie__title">Ipsum (2015) </a>
 
                                 <p class="movie__time">80 min</p>
 
-                                <p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                    <a href="single.jsp">Drama</a></p>
+                                <p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                    <a href="ios_detail.jsp">Drama</a></p>
                                 <ul class="list_6">
                                     <li><i class="icon1"> </i>
 
@@ -145,17 +145,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="movie movie-test movie-test-light movie-test-right">
                             <div class="movie__images">
-                                <a href="single.jsp" class="movie-beta__link">
+                                <a href="ios_detail.jsp" class="movie-beta__link">
                                     <img alt="" src="images/4.jpg" class="img-responsive" alt=""/>
                                 </a>
                             </div>
                             <div class="movie__info">
-                                <a href="single.jsp" class="movie__title">Ipsum (2015) </a>
+                                <a href="ios_detail.jsp" class="movie__title">Ipsum (2015) </a>
 
                                 <p class="movie__time">80 min</p>
 
-                                <p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                    <a href="single.jsp">Drama</a></p>
+                                <p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                    <a href="ios_detail.jsp">Drama</a></p>
                                 <ul class="list_6">
                                     <li><i class="icon1"> </i>
 
@@ -171,17 +171,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="movie movie-test movie-test-dark movie-test-left">
                             <div class="movie__images">
-                                <a href="single.jsp" class="movie-beta__link">
+                                <a href="ios_detail.jsp" class="movie-beta__link">
                                     <img alt="" src="images/5.jpg" class="img-responsive" alt=""/>
                                 </a>
                             </div>
                             <div class="movie__info">
-                                <a href="single.jsp" class="movie__title">Ipsum (2015) </a>
+                                <a href="ios_detail.jsp" class="movie__title">Ipsum (2015) </a>
 
                                 <p class="movie__time">80 min</p>
 
-                                <p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                    <a href="single.jsp">Drama</a></p>
+                                <p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                    <a href="ios_detail.jsp">Drama</a></p>
                                 <ul class="list_6">
                                     <li><i class="icon1"> </i>
 
@@ -197,17 +197,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="movie movie-test movie-test-dark movie-test-left">
                             <div class="movie__images">
-                                <a href="single.jsp" class="movie-beta__link">
+                                <a href="ios_detail.jsp" class="movie-beta__link">
                                     <img alt="" src="images/6.jpg" class="img-responsive" alt=""/>
                                 </a>
                             </div>
                             <div class="movie__info">
-                                <a href="single.jsp" class="movie__title">Ipsum (2015) </a>
+                                <a href="ios_detail.jsp" class="movie__title">Ipsum (2015) </a>
 
                                 <p class="movie__time">80 min</p>
 
-                                <p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                    <a href="single.jsp">Drama</a></p>
+                                <p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                    <a href="ios_detail.jsp">Drama</a></p>
                                 <ul class="list_6">
                                     <li><i class="icon1"> </i>
 
@@ -223,7 +223,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="movie movie-test movie-test-light movie-test-right">
                             <div class="movie__images">
-                                <a href="single.jsp" class="movie-beta__link">
+                                <a href="ios_detail.jsp" class="movie-beta__link">
                                     <img alt="" src="images/7.jpg" class="img-responsive" alt=""/>
                                 </a>
                             </div>
@@ -232,8 +232,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 <p class="movie__time">80 min</p>
 
-                                <p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                    <a href="single.jsp">Drama</a></p>
+                                <p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                    <a href="ios_detail.jsp">Drama</a></p>
                                 <ul class="list_6">
                                     <li><i class="icon1"> </i>
 
@@ -249,17 +249,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="movie movie-test movie-test-light movie-test-right">
                             <div class="movie__images">
-                                <a href="single.jsp" class="movie-beta__link">
+                                <a href="ios_detail.jsp" class="movie-beta__link">
                                     <img alt="" src="images/8.jpg" class="img-responsive" alt=""/>
                                 </a>
                             </div>
                             <div class="movie__info">
-                                <a href="single.jsp" class="movie__title">Ipsum (2015) </a>
+                                <a href="ios_detail.jsp" class="movie__title">Ipsum (2015) </a>
 
                                 <p class="movie__time">80 min</p>
 
-                                <p class="movie__option"><a href="single.jsp">Contray</a> | <a href="single.jsp">Dolor sit</a> |
-                                    <a href="single.jsp">Drama</a></p>
+                                <p class="movie__option"><a href="ios_detail.jsp">Contray</a> | <a href="ios_detail.jsp">Dolor sit</a> |
+                                    <a href="ios_detail.jsp">Drama</a></p>
                                 <ul class="list_6">
                                     <li><i class="icon1"> </i>
 
