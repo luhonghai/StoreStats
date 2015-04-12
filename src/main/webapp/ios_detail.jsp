@@ -142,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="single">
                         <%if(listReview != null && listReview.size() >0){%>
-                            <h1><%=listReview.size()%> Reviews</h1>
+                            <h1><%=listReview.size()%> Reviews Recently</h1>
                         <%}else{%>
                             <h1>No Reviews</h1>
                         <%}%>

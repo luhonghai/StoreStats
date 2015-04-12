@@ -85,6 +85,36 @@
                             <div id="tabs2-ios" class="movie_box">
                                 <h2>iOS Application</h2>
                                 <div>
+                                    <table>
+                                        <tr>
+                                            <td>Your favourite App</td>
+                                            <td>Competitor App</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select id="MyApp">
+                                                    <%if(iOSList != null && iOSList.size()>0)
+                                                        for(int i=0; i<iOSList.size(); i++){%>
+                                                        <option value="<%=iOSList.get(i).getTrackId()%>"><%=iOSList.get(i).getTrackName().length()>20? iOSList.get(i).getTrackName().substring(0,19)+"..." : iOSList.get(i).getTrackName()%></option>
+                                                    <%}%>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select id="MyCompetitor">
+                                                    <%if(iOSList != null && iOSList.size()>0)
+                                                        for(int i=0; i<iOSList.size(); i++){%>
+                                                    <option value="<%=iOSList.get(i).getTrackId()%>"><%=iOSList.get(i).getTrackName().length()>20? iOSList.get(i).getTrackName().substring(0,19)+"..." : iOSList.get(i).getTrackName()%></option>
+                                                    <%}%>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <a class="btn1" id="btnCompare"><span> </span>Compare</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div>
                                     <!-- Movie variant with time -->
                                     <%
                                         if(iOSList != null && iOSList.size()>0){

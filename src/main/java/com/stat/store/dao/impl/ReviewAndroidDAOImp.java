@@ -28,34 +28,37 @@ public class ReviewAndroidDAOImp extends AbstractDAO<ReviewAndroid, Integer> imp
 
         session.login(Common.USERNAME, Common.PASSWORD);
         session.getContext().setAndroidId(Common.ANDROID_ID);
+        //for(int j=0; j<10; j++){
+            Market.CommentsRequest commentsRequest = Market.CommentsRequest.newBuilder()
+                    .setAppId(app_id)
+                    .setStartIndex(0)
+                    .setEntriesCount(10)
+                    .build();
 
-        Market.CommentsRequest commentsRequest = Market.CommentsRequest.newBuilder()
-                .setAppId(app_id)
-                .setStartIndex(0)
-                .setEntriesCount(10)
-                .build();
+            MarketSession.Callback<Market.CommentsResponse> callback = new MarketSession.Callback<Market.CommentsResponse>(){
 
-        MarketSession.Callback<Market.CommentsResponse> callback = new MarketSession.Callback<Market.CommentsResponse>(){
+                @Override
+                public void onResult(Market.ResponseContext arg0, Market.CommentsResponse response) {
+                    System.out.println(response);
+                    ReviewAndroid reviewAndroid;
+                    for(int i=0; i<response.getCommentsCount(); i++){
+                        reviewAndroid= new ReviewAndroid();
+                        reviewAndroid.setId(i+1);
+                        reviewAndroid.setDescription(response.getComments(i).getText());
+                        reviewAndroid.setAppId(app_id);
+                        reviewAndroid.setAuthorName(response.getComments(i).getAuthorName());
+                        reviewAndroid.setRating(response.getComments(i).getRating()+"");
+                        reviewAndroid.setCreationTime(response.getComments(i).getCreationTime()+"");
 
-            @Override
-            public void onResult(Market.ResponseContext arg0, Market.CommentsResponse response) {
-                ReviewAndroid reviewAndroid;
-                for(int i=0; i<response.getCommentsCount(); i++){
-                    reviewAndroid= new ReviewAndroid();
-                    reviewAndroid.setId(i+1);
-                    reviewAndroid.setDescription(response.getComments(i).getText());
-                    reviewAndroid.setAppId(app_id);
-                    reviewAndroid.setAuthorName(response.getComments(i).getAuthorName());
-                    reviewAndroid.setRating(response.getComments(i).getRating()+"");
-                    reviewAndroid.setCreationTime(response.getComments(i).getCreationTime()+"");
-
-                    list.add(reviewAndroid);
+                        list.add(reviewAndroid);
+                    }
                 }
-            }
-        };
+            };
+            session.append(commentsRequest, callback);
+            session.flush();
+        //}
 
-        session.append(commentsRequest, callback);
-        session.flush();
+
         return list;
     }
 

@@ -29,43 +29,49 @@ public class AndroidDAOImp extends AbstractDAO<AppAndroid, Integer> implements A
 
         session.login(Common.USERNAME, Common.PASSWORD);
         session.getContext().setAndroidId(Common.ANDROID_ID);
+        //for(int j = 0; j<10; j++) {
+            Market.AppsRequest appsRequest = Market.AppsRequest.newBuilder()
+                    .setQuery(name)
+                    .setStartIndex(0)
+                    .setEntriesCount(10)
+                    .setWithExtendedInfo(true)
+                    .setAppType(Market.AppType.APPLICATION)
+                    .build();
 
-        Market.AppsRequest appsRequest = Market.AppsRequest.newBuilder().setQuery(name)
-                .setStartIndex(0).setEntriesCount(10).setWithExtendedInfo(true)
-                .setAppType(Market.AppType.APPLICATION).build();
+            MarketSession.Callback<Market.AppsResponse> callback = new MarketSession.Callback<Market.AppsResponse>() {
+                @Override
+                public void onResult(Market.ResponseContext context, Market.AppsResponse response) {
+                    System.out.println(response);
+                    if (response != null) {
+                        AppAndroid app;
+                        for (int i = 0; i < response.getAppCount(); i++) {
+                            app = new AppAndroid();
+                            app.setTitle(response.getApp(i).getTitle());
+                            app.setCreator(response.getApp(i).getCreator());
+                            app.setCreatorId(response.getApp(i).getCreatorId());
+                            app.setAppId(response.getApp(i).getId());
+                            app.setPackageName(response.getApp(i).getPackageName());
+                            app.setPrice(response.getApp(i).getPrice());
+                            app.setRating(response.getApp(i).getRating().substring(0, 3));
+                            app.setRatingCount(response.getApp(i).getRatingsCount() + "");
+                            app.setVersion(response.getApp(i).getVersion());
+                            app.setDescription(response.getApp(i).getExtendedInfo().getDescription());
+                            app.setDownloadCount(response.getApp(i).getExtendedInfo().getDownloadsCountText());
+                            app.setPromotionText(response.getApp(i).getExtendedInfo().getPromoText());
+                            app.setCategory(response.getApp(i).getExtendedInfo().getCategory());
+                            app.setAppType(response.getApp(i).getAppType().name());
+                            app.setArtworkUrl(AndroidUtil.getArtworkUrl(app.getPackageName()));
 
-        MarketSession.Callback<Market.AppsResponse> callback = new MarketSession.Callback<Market.AppsResponse>() {
-            @Override
-            public void onResult(Market.ResponseContext context, Market.AppsResponse response) {
+                            list.add(app);
+                        }
 
-                if (response != null) {
-                    AppAndroid app;
-                    for (int i = 0; i < response.getAppCount(); i++) {
-                        app = new AppAndroid();
-                        app.setTitle(response.getApp(i).getTitle());
-                        app.setCreator(response.getApp(i).getCreator());
-                        app.setCreatorId(response.getApp(i).getCreatorId());
-                        app.setAppId(response.getApp(i).getId());
-                        app.setPackageName(response.getApp(i).getPackageName());
-                        app.setPrice(response.getApp(i).getPrice());
-                        app.setRating(response.getApp(i).getRating().substring(0,3));
-                        app.setRatingCount(response.getApp(i).getRatingsCount() + "");
-                        app.setVersion(response.getApp(i).getVersion());
-                        app.setDescription(response.getApp(i).getExtendedInfo().getDescription());
-                        app.setDownloadCount(response.getApp(i).getExtendedInfo().getDownloadsCountText());
-                        app.setPromotionText(response.getApp(i).getExtendedInfo().getPromoText());
-                        app.setCategory(response.getApp(i).getExtendedInfo().getCategory());
-                        app.setAppType(response.getApp(i).getAppType().name());
-                        app.setArtworkUrl(AndroidUtil.getArtworkUrl(app.getPackageName()));
-
-                        list.add(app);
                     }
-
                 }
-            }
-        };
-        session.append(appsRequest, callback);
-        session.flush();
+            };
+            session.append(appsRequest, callback);
+            session.flush();
+        //}
+
         return list;
     }
 
