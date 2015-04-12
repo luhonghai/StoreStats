@@ -108,13 +108,13 @@
                                                     <%}%>
                                                 </select>
                                             </td>
-                                            <td>
+                                            <td style="width:160px;">
                                                 <a class="btn1" id="btnCompare"><span> </span>Compare</a>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
-                                <div>
+                                <div style="margin-top:20px;">
                                     <!-- Movie variant with time -->
                                     <%
                                         if(iOSList != null && iOSList.size()>0){
