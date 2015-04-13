@@ -140,6 +140,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="clearfix"></div>
                     <p class="m_4"><%=app.getDescription() != null? app.getDescription() : ""%></p>
 
+                    <div>
+                        <table>
+                            <tr>
+                                <%if(app.getScreenShot1() != null){%>
+                                <td><img src="<%=app.getScreenShot1()%>" style="width: 200px;"/></td>
+                                <%}%>
+
+                                <%if(app.getScreenShot2() != null){%>
+                                <td><img src="<%=app.getScreenShot2()%>" style="width: 200px;"/></td>
+                                <%}%>
+
+                                <%if(app.getScreenShot3() != null){%>
+                                <td><img src="<%=app.getScreenShot3()%>" style="width: 200px;"/></td>
+                                <%}%>
+
+                                <%if(app.getScreenShot4() != null){%>
+                                <td><img src="<%=app.getScreenShot4()%>" style="width: 200px;"/></td>
+                                <%}%>
+
+                                <%if(app.getScreenShot5() != null){%>
+                                <td><img src="<%=app.getScreenShot5()%>" style="width: 200px;"/></td>
+                                <%}%>
+                            </tr>
+                        </table>
+                    </div>
+
                     <div class="single">
                         <%if(listReview != null && listReview.size() >0){%>
                             <h1><%=listReview.size()%> Reviews Recently</h1>
