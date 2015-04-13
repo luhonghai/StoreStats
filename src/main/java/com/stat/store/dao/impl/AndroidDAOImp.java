@@ -41,7 +41,7 @@ public class AndroidDAOImp extends AbstractDAO<AppAndroid, Integer> implements A
             MarketSession.Callback<Market.AppsResponse> callback = new MarketSession.Callback<Market.AppsResponse>() {
                 @Override
                 public void onResult(Market.ResponseContext context, Market.AppsResponse response) {
-                    System.out.println(response);
+                    //System.out.println(response);
                     if (response != null) {
                         AppAndroid app;
                         for (int i = 0; i < response.getAppCount(); i++) {

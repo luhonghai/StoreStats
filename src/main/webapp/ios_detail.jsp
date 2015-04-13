@@ -131,9 +131,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p class="movie_option"><strong>Rating: </strong><%=rating%></p>
 
                         <%if(isExisted){%>
-                            <div class="down_btn"><a class="btn1" id="btnUnFollow" trackid="<%=app.getTrackId()%>"><span> </span>Unfollow</a></div>
+                            <div class="button-follow"><a trackid="<%=app.getTrackId()%>" id="btnUnFollow" class="hvr-shutter-out-horizontal">Unfollow</a></div>
                         <%}else{%>
-                            <div class="down_btn"><a class="btn1" id="btnFollow" trackid="<%=app.getTrackId()%>"><span> </span>Follow</a></div>
+                            <div class="button-follow"><a trackid="<%=app.getTrackId()%>" id="btnFollow" class="hvr-shutter-out-horizontal">Follow</a></div>
                         <%}%>
 
                     </div>
@@ -285,7 +285,7 @@ $(document).ready(function(){
                 success: function(result){
                     if(result == "done"){
                         $("#btnUnFollow").attr("id", "btnFollow");
-                        $("#btnFollow").html("<span> </span>Follow");
+                        $("#btnFollow").text("Follow");
                     }else{
                         alert("There is an error while processing data");
                     }
@@ -307,7 +307,7 @@ $(document).ready(function(){
                 success: function(result){
                     if(result == "done"){
                         $("#btnFollow").attr("id", "btnUnFollow");
-                        $("#btnUnFollow").html("<span> </span>Unfollow");
+                        $("#btnUnFollow").text("Unfollow");
                     }else{
                         alert("There is an error while processing data");
                     }

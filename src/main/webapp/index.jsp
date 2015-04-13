@@ -76,19 +76,19 @@
                     <li><img src="images/banner.jpg" class="img-responsive" alt=""/>
 
                         <div class="button">
-                            <a href="#" class="hvr-shutter-out-horizontal">Watch Now</a>
+                            <a class="hvr-shutter-out-horizontal">Watch Now</a>
                         </div>
                     </li>
                     <li><img src="images/banner1.jpg" class="img-responsive" alt=""/>
 
                         <div class="button">
-                            <a href="#" class="hvr-shutter-out-horizontal">Watch Now</a>
+                            <a class="hvr-shutter-out-horizontal">Watch Now</a>
                         </div>
                     </li>
                     <li><img src="images/banner2.jpg" class="img-responsive" alt=""/>
 
                         <div class="button">
-                            <a href="#" class="hvr-shutter-out-horizontal">Watch Now</a>
+                            <a class="hvr-shutter-out-horizontal">Watch Now</a>
                         </div>
                     </li>
                 </ul>

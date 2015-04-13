@@ -109,7 +109,9 @@
                                                 </select>
                                             </td>
                                             <td style="width:160px;">
-                                                <a class="btn1" id="btnCompare"><span> </span>Compare</a>
+                                                <div class="button-follow">
+                                                    <a class="hvr-shutter-out-horizontal" id="btnCompareiOS">Compare</a>
+                                                </div>
                                             </td>
                                         </tr>
                                     </table>
@@ -181,6 +183,38 @@
                             <div id="tabs2-android" class="movie_box">
                                 <h2>Android Application</h2>
                                 <div>
+                                    <table>
+                                        <tr>
+                                            <td>Your favourite App</td>
+                                            <td>Competitor App</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select id="MyAppA">
+                                                    <%if(androidList != null && androidList.size()>0)
+                                                        for(int i=0; i<androidList.size(); i++){%>
+                                                    <option value="<%=androidList.get(i).getPackageName()%>"><%=androidList.get(i).getTitle().length()>20? androidList.get(i).getTitle().substring(0,19)+"..." : androidList.get(i).getTitle()%></option>
+                                                    <%}%>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select id="MyCompetitorA">
+                                                    <%if(androidList != null && androidList.size()>0)
+                                                        for(int i=0; i<androidList.size(); i++){%>
+                                                    <option value="<%=androidList.get(i).getPackageName()%>"><%=androidList.get(i).getTitle().length()>20? androidList.get(i).getTitle().substring(0,19)+"..." : androidList.get(i).getTitle()%></option>
+                                                    <%}%>
+                                                </select>
+                                            </td>
+                                            <td style="width:160px;">
+                                                <div class="button-follow">
+                                                    <a class="hvr-shutter-out-horizontal" id="btnCompareAndroid">Compare</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div style="margin-top:20px;">
                                     <!-- Movie variant with time -->
                                     <%
                                         if(androidList != null && androidList.size()>0){
@@ -484,6 +518,45 @@
             tabs: "> div > span",
             updateHash: false
         });
+
+        $("#btnCompareiOS").click(function(){
+            //get tracking id
+            var my_app = $("#MyApp").val();
+            var competitor = $("#MyCompetitor").val();
+            $.ajax({
+                type: "POST",
+                url: "AppCompareHandler",
+                data: "my_app="+my_app+"&competitor="+competitor+"&action=compareIOS",
+                success: function(result){
+                    if(result != "invalid"){
+                        console.log(result);
+                    }else{
+                        alert("There is an error while processing data");
+                    }
+                },
+                dataType: "text"
+            });
+        });
+
+        $("#btnCompareAndroid").click(function(){
+            //get tracking id
+            var my_app = $("#MyAppA").val();
+            var competitor = $("#MyCompetitorA").val();
+            $.ajax({
+                type: "POST",
+                url: "AppCompareHandler",
+                data: "my_app="+my_app+"&competitor="+competitor+"&action=compareAndroid",
+                success: function(result){
+                    if(result != "invalid"){
+                        console.log(result);
+                    }else{
+                        alert("There is an error while processing data");
+                    }
+                },
+                dataType: "text"
+            });
+        });
+
     });
 </script>
 </body>

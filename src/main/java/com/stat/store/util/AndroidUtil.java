@@ -39,6 +39,7 @@ public class AndroidUtil {
             Elements images = doc.select("img.screenshot");
             for (int i=0; i<images.size(); i++) {
                 list.add(images.get(i).absUrl("src"));
+                //System.out.println(images.get(i).absUrl("src"));
             }
         } catch (IOException e) {
             e.printStackTrace();

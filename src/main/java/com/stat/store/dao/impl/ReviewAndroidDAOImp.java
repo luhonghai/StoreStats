@@ -39,7 +39,7 @@ public class ReviewAndroidDAOImp extends AbstractDAO<ReviewAndroid, Integer> imp
 
                 @Override
                 public void onResult(Market.ResponseContext arg0, Market.CommentsResponse response) {
-                    System.out.println(response);
+                    //System.out.println(response);
                     ReviewAndroid reviewAndroid;
                     for(int i=0; i<response.getCommentsCount(); i++){
                         reviewAndroid= new ReviewAndroid();
