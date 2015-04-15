@@ -22,25 +22,20 @@ public class UserHandler extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = null;
         UserService userService = new UserService();
+        HttpSession session = request.getSession();
         try {
             out = response.getWriter();
-
             String action = request.getParameter("action");
-
             if(action.equalsIgnoreCase("login")){
                 String username = request.getParameter("_request_username");
                 String password = request.getParameter("_request_password");
-
-
                 User member = userService.login(username, password);
-
                 if(member != null){
-                    HttpSession session = request.getSession();
                     session.setAttribute("member", member);
-
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
                 }else{
-                    out.print("invalid");
+                    session.setAttribute("message", "Invalid username or password");
+                    response.sendRedirect(request.getContextPath() + "/login.jsp");
                 }
             }else if(action.equalsIgnoreCase("register")){
                 String username = request.getParameter("username");
@@ -62,9 +57,14 @@ public class UserHandler extends HttpServlet {
                 }else{
                     out.print("invalid");
                 }
+            } else if(action.equalsIgnoreCase("logout")){
+                session.setAttribute("member", null);
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
             }
         } catch (DAOException e) {
             e.printStackTrace();
+            session.setAttribute("message", "Could not complete process");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         } finally{
             if(out != null)
             out.close();

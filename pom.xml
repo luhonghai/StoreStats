@@ -88,12 +88,12 @@
             <version>2.4.1</version>
         </dependency>
 
-        <!-- JSoup HTML parser library @ http://jsoup.org/
+        <!-- JSoup HTML parser library @ http://jsoup.org/ -->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.8.1</version>
-        </dependency> -->
+        </dependency>
 
     </dependencies>
 

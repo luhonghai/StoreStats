@@ -14,7 +14,6 @@ p {
 
 html, body {
     font-family: 'Roboto Condensed', sans-serif;
-    background: #3f444e;
 }
 
 body a {
@@ -26,7 +25,7 @@ body a {
 }
 
 .container_wrap {
-    padding: 5em 0;
+
 }
 
 .header_top {
@@ -197,7 +196,7 @@ body a {
 
 ul.header_right_box {
     padding: 0;
-    margin: 0 0 0 23%;
+    margin: 20px 0 20px 23%;
     list-style: none;
 
 }
@@ -679,8 +678,8 @@ i.icon3 {
     border-bottom: 1px solid #CACACA;
     background: none;
     position: relative;
-    margin-bottom: 2em;
-    float: right;
+    width: 60%;
+    margin: 20px auto;
 }
 
 .search form input[type="text"] {
@@ -690,7 +689,7 @@ i.icon3 {
     color: #A6A8AB;
     border: none;
     outline: none;
-    width: 76%;
+    width: 100%;
     background: none;
     font-style: italic;
 }
@@ -1028,6 +1027,7 @@ ul.first li a:hover {
     width: 50%;
     border: none;
     position: relative;
+    max-height: 160px;
 }
 
 .movie-test .movie-beta__link:after {
@@ -1767,7 +1767,7 @@ div.register-bottom-grid {
 /*--responsive design--*/
 @media only screen and (max-width: 1024px) {
     ul.header_right_box {
-        margin: 0 0 0 17%;
+        margin: 20px 0 20px 17%;
     }
 
     .banner_desc {
@@ -1815,7 +1815,7 @@ div.register-bottom-grid {
 
 @media only screen and (max-width: 920px) {
     ul.header_right_box {
-        margin: 0;
+        margin: 20px 0;
     }
 
     .nav li {
@@ -2084,4 +2084,42 @@ div.register-bottom-grid {
     .to input[type="text"] {
         width: 48%;
     }
+}
+
+
+
+/** SLIDER **/
+
+/* jssor slider bullet navigator skin 13 css */
+/*
+.jssorb13 div           (normal)
+.jssorb13 div:hover     (normal mouseover)
+.jssorb13 .av           (active)
+.jssorb13 .av:hover     (active mouseover)
+.jssorb13 .dn           (mousedown)
+*/
+.jssorb13 {
+    position: absolute;
+}
+.jssorb13 div, .jssorb13 div:hover, .jssorb13 .av {
+    position: absolute;
+    /* size of bullet elment */
+    width: 21px;
+    height: 21px;
+    background: url(../images/slider/b13.png) no-repeat;
+    overflow: hidden;
+    cursor: pointer;
+}
+.jssorb13 div { background-position: -5px -5px; }
+.jssorb13 div:hover, .jssorb13 .av:hover { background-position: -35px -5px; }
+.jssorb13 .av { background-position: -65px -5px; }
+.jssorb13 .dn, .jssorb13 .dn:hover { background-position: -95px -5px; }
+
+
+.app_detail_img {
+
+}
+
+.dd-options {
+    height: 400px;
 }
