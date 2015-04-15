@@ -254,11 +254,11 @@
 </div>
 
 <script>
+    var currentBarData;
     function createChart(data1, data2) {
         $("#chart-container").empty();
         $("#chart-container").html("<canvas id=\"chart-compare\" width=\"600px\" height=\"400px\"></canvas>");
-        $("#myModal").modal("show");
-        var data = {
+        currentBarData = {
             labels: ["Price", "Rating", "Rating count"],
             datasets: [
                 {
@@ -272,10 +272,17 @@
                     data: data2
                 }]
         }
-        var barChart = new Chart($("#chart-compare").get(0).getContext("2d")).Bar(data);
+        $("#myModal").modal("show");
     }
 
+
     $(document).ready(function(){
+        $('#myModal').on('shown.bs.modal', function () {
+            if (typeof  currentBarData != 'undefined') {
+                var barChart = new Chart($("#chart-compare").get(0).getContext("2d")).Bar(currentBarData);
+            }
+        })
+
         $("#btnCompareiOS").click(function(){
             //get tracking id
             var my_app = $("#MyApp").data('ddslick').selectedData.value;
@@ -289,12 +296,12 @@
                         var data = JSON.parse(result);
                         if (data.length == 2) {
                             createChart([
-                                parseInt(data[0].price),
-                                parseInt(data[0].averageUserRating),
+                                data[0].price,
+                                parseFloat(data[0].averageUserRating),
                                 parseInt(data[0].userRatingCount)
                             ],[
-                                parseInt(data[1].price),
-                                parseInt(data[1].averageUserRating),
+                                data[1].price,
+                                parseFloat(data[1].averageUserRating),
                                 parseInt(data[1].userRatingCount)
                             ]);
                         }
@@ -319,12 +326,12 @@
                         var data = JSON.parse(result);
                         if (data.length == 2) {
                             createChart([
-                                parseInt(data[0].price == "" ? 0 : parseFloat(data[0].price)),
-                                parseInt(data[0].rating),
+                                data[0].price == "" ? 0 : parseFloat(data[0].price),
+                                parseFloat(data[0].rating),
                                 parseInt(data[0].ratingCount)
                             ],[
-                                parseInt(data[1].price == "" ? 0 : parseFloat(data[1].price)),
-                                parseInt(data[1].rating),
+                                data[1].price == "" ? 0 : parseFloat(data[1].price),
+                                parseFloat(data[1].rating),
                                 parseInt(data[1].ratingCount)
                             ]);
                         }
@@ -335,6 +342,10 @@
                 dataType: "text"
             });
         });
+
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        })
 
         $("#MyApp").ddslick({
             width: 250,
