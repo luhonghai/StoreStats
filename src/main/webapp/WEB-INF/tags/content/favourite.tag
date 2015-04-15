@@ -89,7 +89,7 @@
 
         <div class="movie movie-test movie-test-dark <%if(i%2==0){%>movie-test-left<%}else{%>movie-test-right<%}%>">
             <div class="movie__images">
-                <a href="ios_detail.jsp?track_id=<%=androidList.get(i).getAppId()%>" class="movie-beta__link">
+                <a href="android_detail.jsp?package_name=<%=androidList.get(i).getPackageName()%>&app_id=<%=androidList.get(i).getAppId()%>" class="movie-beta__link">
                     <img alt="" src="<%=androidList.get(i).getArtworkUrl()%>" class="img-search" alt=""/>
                 </a>
             </div>
@@ -100,7 +100,7 @@
                     }else{
                         name = androidList.get(i).getTitle();
                     }%>
-                <a href="ios_detail.jsp?track_id=<%=androidList.get(i).getAppId()%>" class="movie__title"><%=name%></a>
+                <a href="android_detail.jsp?package_name=<%=androidList.get(i).getPackageName()%>&app_id=<%=androidList.get(i).getAppId()%>" class="movie__title"><%=name%></a>
 
                 <!--<p class="movie__time"><!%=iOSList.get(i).getSellerName()%></p>-->
 
