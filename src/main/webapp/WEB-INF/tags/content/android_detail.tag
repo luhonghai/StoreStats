@@ -54,9 +54,9 @@
             <p class="movie_option"><strong>Rating: </strong><%=rating%></p>
 
             <%if(isExisted){%>
-            <div class="down_btn"><a class="btn1" id="btnUnFollow" appid="<%=app.getAppId()%>"><span> </span>Unfollow</a></div>
+            <div class="down_btn"><a class="btn1" id="btnUnFollow" appid="<%=app.getAppId()%>">Unfollow</a></div>
             <%}else{%>
-            <div class="down_btn"><a class="btn1" id="btnFollow" appid="<%=app.getAppId()%>"><span> </span>Follow</a></div>
+            <div class="down_btn"><a class="btn1" id="btnFollow" appid="<%=app.getAppId()%>">Follow</a></div>
             <%}%>
 
         </div>
