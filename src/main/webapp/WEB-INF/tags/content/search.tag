@@ -244,7 +244,11 @@
                 <h4 class="modal-title" id="myModalLabel">App compare</h4>
             </div>
             <div class="modal-body">
-                <div id="chart-container" style="width: 600px;height: 400px;"></div>
+                <div style="width:600px;overflow: hidden;">
+                    <div id="chart-container-1" style="width: 200px;height: 400px;float: left;"></div>
+                    <div id="chart-container-2" style="width: 200px;height: 400px;float: left;"></div>
+                    <div id="chart-container-3" style="width: 200px;height: 400px;float: left;"></div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -256,32 +260,48 @@
 <script>
     var currentBarData;
     function createChart(data1, data2) {
-        $("#chart-container").empty();
-        $("#chart-container").html("<canvas id=\"chart-compare\" width=\"600px\" height=\"400px\"></canvas>");
-        currentBarData = {
-            labels: ["Price", "Rating", "Rating count"],
-            datasets: [
-                {
-                    fillColor: "rgba(225,0,0,1)",
-                    strokeColor: "rgba(225,0,0,1)",
-                    data: data1
-                },
-                {
-                    fillColor: "rgba(0,26,225,1)",
-                    strokeColor: "rgba(0,26,225,1)",
-                    data: data2
-                }]
+
+        currentBarData = [];
+        var i;
+        for (i = 0; i < data1.length; i++) {
+            $("#chart-container-" +(i+1)).empty();
+            $("#chart-container-" +(i+1)).html("<canvas id=\"chart-compare-"+(i+1)+"\" width=\"200px\" height=\"400px\"></canvas>");
+            var label = "";
+            if (i == 0) {
+                label = "Price";
+            } else if (i == 1) {
+                label = "Rating";
+            } else if (i == 2) {
+                label = "Rating count";
+            }
+            currentBarData.push({
+                labels: [label],
+                datasets: [
+                    {
+                        fillColor: "rgba(225,0,0,1)",
+                        strokeColor: "rgba(225,0,0,1)",
+                        data: [isNaN(data1[i]) ? 0 : data1[i]]
+                    },
+                    {
+                        fillColor: "rgba(0,26,225,1)",
+                        strokeColor: "rgba(0,26,225,1)",
+                        data: [isNaN(data2[i]) ? 0 : data2[i]]
+                    }]
+            });
         }
-        $("#myModal").modal("show");
+        $('#myModal').modal("show");
     }
 
-
     $(document).ready(function(){
+
         $('#myModal').on('shown.bs.modal', function () {
-            if (typeof  currentBarData != 'undefined') {
-                var barChart = new Chart($("#chart-compare").get(0).getContext("2d")).Bar(currentBarData);
+            if (typeof  currentBarData != 'undefined' && currentBarData.length == 3) {
+                var i;
+                for (i = 0; i < currentBarData.length; i++) {
+                    new Chart($("#chart-compare-" + (i+1)).get(0).getContext("2d")).Bar(currentBarData[i]);
+                }
             }
-        })
+        });
 
         $("#btnCompareiOS").click(function(){
             //get tracking id
@@ -296,11 +316,11 @@
                         var data = JSON.parse(result);
                         if (data.length == 2) {
                             createChart([
-                                data[0].price,
+                                parseFloat(data[0].price),
                                 parseFloat(data[0].averageUserRating),
                                 parseInt(data[0].userRatingCount)
                             ],[
-                                data[1].price,
+                                parseFloat(data[1].price),
                                 parseFloat(data[1].averageUserRating),
                                 parseInt(data[1].userRatingCount)
                             ]);
@@ -326,11 +346,11 @@
                         var data = JSON.parse(result);
                         if (data.length == 2) {
                             createChart([
-                                data[0].price == "" ? 0 : parseFloat(data[0].price),
+                                parseFloat(data[0].price == "" ? 0 : data[0].price),
                                 parseFloat(data[0].rating),
                                 parseInt(data[0].ratingCount)
                             ],[
-                                data[1].price == "" ? 0 : parseFloat(data[1].price),
+                                parseFloat(data[1].price == "" ? 0 : data[1].price),
                                 parseFloat(data[1].rating),
                                 parseInt(data[1].ratingCount)
                             ]);
@@ -342,10 +362,6 @@
                 dataType: "text"
             });
         });
-
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').focus()
-        })
 
         $("#MyApp").ddslick({
             width: 250,
@@ -378,5 +394,7 @@
 
             }
         });
+
+        $("input[name=q]").val("<%=(request.getParameter("q") == null ? "" : request.getParameter("q"))%>");
     });
 </script>
