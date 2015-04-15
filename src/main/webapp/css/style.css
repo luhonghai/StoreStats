@@ -1017,6 +1017,7 @@ ul.first li a:hover {
     width: 50%;
     float: left;
     margin-bottom: 8px;
+    min-height: 190px;
 }
 
 .movie-test-left .movie__images {
