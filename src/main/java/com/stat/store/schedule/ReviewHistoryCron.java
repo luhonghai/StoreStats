@@ -72,5 +72,6 @@ public class ReviewHistoryCron implements Job{
         }catch(DAOException ex){
             ex.printStackTrace();
         }
+        System.out.println("End Job");
     }
 }

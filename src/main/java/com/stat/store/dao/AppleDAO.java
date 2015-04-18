@@ -30,4 +30,6 @@ public interface AppleDAO extends IDAO<AppIOs, Integer>{
 
     public List<AppIOs> getAppsByUserId(int user_id);
 
+    public List<AppIOs> getTop10FreeApp();
+
 }
