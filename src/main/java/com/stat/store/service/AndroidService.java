@@ -59,4 +59,8 @@ public class AndroidService {
         return androidDAO.getAppsByUserId(user_id);
     }
 
+    public List<AppAndroid> getAllFolloweddApp(){
+        return (List<AppAndroid>) androidDAO.findAll();
+    }
+
 }

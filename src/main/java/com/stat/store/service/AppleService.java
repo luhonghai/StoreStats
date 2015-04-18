@@ -55,4 +55,8 @@ public class AppleService {
     public List<AppIOs> getFollowedAppsOfUser(int user_id){
         return appleDAO.getAppsByUserId(user_id);
     }
+
+    public List<AppIOs> getAllFollowedApp(){
+        return (List<AppIOs>) appleDAO.findAll();
+    }
 }

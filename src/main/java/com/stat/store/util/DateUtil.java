@@ -92,6 +92,15 @@ public class DateUtil {
     }
 
     /**
+     * Get current date of sql
+     * @return
+     */
+    public static java.sql.Date getCurrentDate(){
+        java.sql.Date timeNow = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
+        return timeNow;
+    }
+
+    /**
      * Format date
      * @param date
      * @return
