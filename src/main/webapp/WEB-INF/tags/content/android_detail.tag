@@ -60,10 +60,11 @@
 
             <%if(isExisted){%>
             <div class="button-follow"><a trackid="<%=app.getAppId()%>" id="btnUnFollow" class="hvr-shutter-out-horizontal">Unfollow</a></div>
+            <div class="button-follow"><a trackid="<%=app.getAppId()%>" id="btnRating" class="hvr-shutter-out-horizontal" style="margin-top:-40px;margin-left:120px;">Rating History</a></div>
             <%}else{%>
             <div class="button-follow"><a trackid="<%=app.getAppId()%>" id="btnFollow" class="hvr-shutter-out-horizontal">Follow</a></div>
             <%}%>
-            <div class="button-follow"><a trackid="<%=app.getAppId()%>" id="btnRating" class="hvr-shutter-out-horizontal" style="margin-top:-40px;margin-left:120px;">Rating History</a></div>
+
         </div>
         <div class="clearfix"></div>
         <p class="m_4"><%=app.getDescription() != null? app.getDescription() : ""%></p>
