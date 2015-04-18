@@ -66,7 +66,7 @@
                 if(iOSList != null && iOSList.size()>0){
                     for(int i=0; i<iOSList.size(); i++){ %>
 
-            <div class="movie movie-test movie-test-dark <%if(i%2==0){%>movie-test-left<%}else{%>movie-test-right<%}%>">
+            <div class="movie movie-test movie-test-dark movie-test-left">
                 <div class="movie__images">
                     <a href="ios_detail.jsp?track_id=<%=iOSList.get(i).getTrackId()%>" class="movie-beta__link">
                         <img alt="" src="<%=iOSList.get(i).getArtworkUrl()%>" class="img-search" alt=""/>
@@ -175,7 +175,7 @@
                 if(androidList != null && androidList.size()>0){
                     for(int i=0; i<androidList.size(); i++){ %>
 
-            <div class="movie movie-test movie-test-dark <%if(i%2==0){%>movie-test-left<%}else{%>movie-test-right<%}%>">
+            <div class="movie movie-test movie-test-dark movie-test-left">
                 <div class="movie__images">
                     <a href="android_detail.jsp?package_name=<%=androidList.get(i).getPackageName()%>&app_id=<%=androidList.get(i).getAppId()%>" class="movie-beta__link">
                         <img alt="" src="<%=androidList.get(i).getArtworkUrl()%>" class="img-search" alt=""/>

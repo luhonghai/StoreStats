@@ -32,7 +32,23 @@
         <local>com.stat.store.dao.UserDAO</local>
     </ejb-local-ref>
 
+    <ejb-local-ref>
+        <ejb-ref-name>AppleHistoryEJB</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.stat.store.dao.ReviewAppleHistoryDAO</local>
+    </ejb-local-ref>
+
+    <ejb-local-ref>
+        <ejb-ref-name>AndroidHistoryEJB</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.stat.store.dao.ReviewAndroidHistoryDAO</local>
+    </ejb-local-ref>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <listener>
+        <listener-class>com.stat.store.schedule.JobListener</listener-class>
+    </listener>
 </web-app>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 10, 2015 at 11:08 PM
+-- Generation Time: Apr 18, 2015 at 01:28 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.6.4
 
@@ -50,14 +50,16 @@ CREATE TABLE IF NOT EXISTS `App_Android` (
   `ScreenShot4` text,
   `ScreenShot5` text,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `App_Android`
 --
 
 INSERT INTO `App_Android` (`Id`, `User_Id`, `ArtworkUrl`, `Title`, `Creator`, `CreatorId`, `AppId`, `PackageName`, `Price`, `Rating`, `RatingCount`, `Version`, `Description`, `DownloadCount`, `PromotionText`, `Category`, `AppType`, `ScreenShot1`, `ScreenShot2`, `ScreenShot3`, `ScreenShot4`, `ScreenShot5`) VALUES
-(1, 1, 'https://lh4.ggpht.com/UesIRnI54BMQYiNBzoQeHs6irqkj1NwJL-H6ztAAW0Atr5oM2Epe15xndIgYqQtq6Ns=w300', 'Avea Online ??lemler', 'Avea Iletisim Hizmetleri A.S.', '"Avea Iletisim Hizmetleri A.S."', 'v2:com.tmob.AveaOIM:1:13', 'com.tmob.AveaOIM', '', '3.7', '27426', '2.3.3', 'Avea Online ??lemler Art?k Her Yerde Yan?n?zda! \n\nÜstelik Avea hatt?n?z ile, uygulamay? ba?lant? ücreti ödemeden kullanabilirsiniz.\n\nUygulamay? indirerek: \n•	Fatura detaylar?  ve güncel kullan?m bilgileri görüntüleme\n•	Kredi kart? ile fatura ödeme ve Lira yükleme\n•	Konu?ma, Mesajla?ma ve Internet Paketi sat?n alma\n•	Tarife de?i?tirme\n•	Uluslararas? kullan?ma açma – kapama\n•	Öneri ve taleplerinizi iletme\ngibi hatt?n?zla ilgili bir çok ürün ve hizmetimizden; her an, her yerde kolayl?kla yararlanabilirsiniz.\n\n“Avea Online ??lemler” uygulamas?n? indirdikten sonra i?lem yapmak istedi?iniz telefon numaras? ve Jet?ifre’nizi girerek i?lem yapabilirsiniz. Jet?ifre’nizi telefonunuzdan *952#’yi tu?lad?ktan sonra aramaya basarak alabilirsiniz.\n\nRecent changes:\n- Güvenli ?nternet Hizmeti Seçenekleri menüsü eklendi.\n - Gizli Numara engelleme servisi eklendi.\n - Arayan? Bil Servisi yenilendi.\n\nContent rating: Low Maturity', '>250,000', 'Avea Online ??lemler Parma??n?z?n Ucunda!', 'Productivity', 'APPLICATION', 'https://lh5.ggpht.com/jzluX1FpsDOXfpKN3eZOTXGO9jzniy1qOJmijA9HaJR5ZqtsvX3O0o08Ks_DhJW_FxE=h310', 'https://lh6.ggpht.com/m32tsYKZM1URI8aBn8ZBz6qx_OJkaU-pfWNwFJSDsWrRiUAaQYmRoCWOcsaK5ALtLg=h310', 'https://lh4.ggpht.com/oAJmBDvgYJDGrTwMG4yJNNezQt0XKmtaDjlUNBj6NoeQqrWFtEEdWZTrjnNNLISyuQ=h310', 'https://lh5.ggpht.com/ZUbftt66FrYCBQOq7izZtn2sxWNiV15Eg04EshV3Q_14W8u7TajzCydACYKpW3fphcU=h310', NULL);
+(1, 1, 'https://lh4.ggpht.com/UesIRnI54BMQYiNBzoQeHs6irqkj1NwJL-H6ztAAW0Atr5oM2Epe15xndIgYqQtq6Ns=w300', 'Avea Online ??lemler', 'Avea Iletisim Hizmetleri A.S.', '"Avea Iletisim Hizmetleri A.S."', 'v2:com.tmob.AveaOIM:1:13', 'com.tmob.AveaOIM', '', '3.7', '27426', '2.3.3', 'Avea Online ??lemler Art?k Her Yerde Yan?n?zda! \n\nÜstelik Avea hatt?n?z ile, uygulamay? ba?lant? ücreti ödemeden kullanabilirsiniz.\n\nUygulamay? indirerek: \n•	Fatura detaylar?  ve güncel kullan?m bilgileri görüntüleme\n•	Kredi kart? ile fatura ödeme ve Lira yükleme\n•	Konu?ma, Mesajla?ma ve Internet Paketi sat?n alma\n•	Tarife de?i?tirme\n•	Uluslararas? kullan?ma açma – kapama\n•	Öneri ve taleplerinizi iletme\ngibi hatt?n?zla ilgili bir çok ürün ve hizmetimizden; her an, her yerde kolayl?kla yararlanabilirsiniz.\n\n“Avea Online ??lemler” uygulamas?n? indirdikten sonra i?lem yapmak istedi?iniz telefon numaras? ve Jet?ifre’nizi girerek i?lem yapabilirsiniz. Jet?ifre’nizi telefonunuzdan *952#’yi tu?lad?ktan sonra aramaya basarak alabilirsiniz.\n\nRecent changes:\n- Güvenli ?nternet Hizmeti Seçenekleri menüsü eklendi.\n - Gizli Numara engelleme servisi eklendi.\n - Arayan? Bil Servisi yenilendi.\n\nContent rating: Low Maturity', '>250,000', 'Avea Online ??lemler Parma??n?z?n Ucunda!', 'Productivity', 'APPLICATION', 'https://lh5.ggpht.com/jzluX1FpsDOXfpKN3eZOTXGO9jzniy1qOJmijA9HaJR5ZqtsvX3O0o08Ks_DhJW_FxE=h310', 'https://lh6.ggpht.com/m32tsYKZM1URI8aBn8ZBz6qx_OJkaU-pfWNwFJSDsWrRiUAaQYmRoCWOcsaK5ALtLg=h310', 'https://lh4.ggpht.com/oAJmBDvgYJDGrTwMG4yJNNezQt0XKmtaDjlUNBj6NoeQqrWFtEEdWZTrjnNNLISyuQ=h310', 'https://lh5.ggpht.com/ZUbftt66FrYCBQOq7izZtn2sxWNiV15Eg04EshV3Q_14W8u7TajzCydACYKpW3fphcU=h310', NULL),
+(2, 1, 'https://lh5.ggpht.com/P7dN99jPTFC2o4jJZ_zMd-zsk1qLqw4WO_ZJk5TJZ576B0Uqy0KpM4ftkVBmoilZtIc=w300', 'Boom Beach', 'Supercell', 'Supercell', 'v2:com.supercell.boombeach:1:20046', 'com.supercell.boombeach', '', '4.3', '2341420', '20.46', 'Welcome to Boom Beach: come with a plan or leave in defeat!\n\nFight the evil Blackguard with brains and brawn in this epic combat strategy game. Attack enemy bases to free enslaved islanders and unlock the secrets of this tropical paradise. Create a Task Force with players around the world to take on the enemy together. Scout, plan, then BOOM THE BEACH!\n\nPLEASE NOTE! Boom Beach is free to download and play. However, some game items can also be purchased for real money. If you do not want to use this feature, please set up password protection for purchases in the settings of your Google Play Store app.\n\nFEATURES\n- Play with millions of other players, raid hundreds of enemy bases for loot\n- Battle for control of precious resources to upgrade your base against enemy attacks\n- Explore a huge tropical archipelago and discover the mysterious power of the Life Crystals\n- Face fearsome Blackguard Bosses and uncover their evil plans\n- Join other players to form an unstoppable Task Force to take on co-op missions\n\nUnder our Terms of Services and Privacy Policy, Boom Beach is allowed for download and play only for persons 13 years or over of age without parental consent.\n\nNote: A network connection is required to play\n\nParent''s guide:\nhttp://www.supercell.net/parents\n\nPrivacy Policy:\nhttp://www.supercell.net/privacy-policy/\n\nTerms of Service:\nhttp://www.supercell.net/terms-of-service/\n\nRecent changes:\nNEW TROOP\n- The Torcher is a massive armored unit that burns everything in sight!\n\nNEW STUFF\n- Find new wildlife on your island, and female villagers!\n- New Power Base tactical note system for Task Forces\n- See information about your attacker’s statues\n- Several new Power Base layouts\n\nIMPROVEMENTS\n- The Grenadier now throws faster and further\n- Cannons, Boom Cannons and Boom Mines no longer deal double damage to Tanks\n- Tanks do more damage and train faster, but have less health\n\nContent rating: Low Maturity', '>250,000', 'Storm the beach and win the day!', 'Strategy', 'GAME', 'https://lh5.ggpht.com/xNeafAgxoO4n6X2KAmTGHge1ThZZrVx_A7_SdvvoJjI3xKOAu5aivL_jmSpQuK8ejmU=h310', 'https://lh6.ggpht.com/dN1mowxwRqENqaVGM9XHGSoIj3evrPx7eGAfGV4CLu1qpnQ_ecAE6mo403T_0rj-g_E=h310', 'https://lh4.ggpht.com/iBGItliUSmJZ9yNS4p9Mnae_7MTbrrBOy2ymm_vm_ykRzEizkHkPf0KWLfmiPrAeCH8=h310', 'https://lh3.ggpht.com/5HQrNgGSyXrV5LNJv4irGSyUheU0PNQHkAzSiQUpxuY4MuAXHaurmlB_OiF7OWn0n7k=h310', 'https://lh5.ggpht.com/zaRa7DoJU2wikx0fEvOkXCp5Nc8_1fZbZECayH89WrPQAH8i1Bb6m9vbrZybUzPc8y0=h310'),
+(3, 1, 'https://lh4.ggpht.com/qn2hFM_K22JNOPZMt525VI97YXbyuNUpFNAhwnD1dtVam5fY4dPp6o2ULfws0tNT1EMQ=w300', 'Boom Man Classic | Boom Free', 'ET - AppsGames Hot', '"ET - AppsGames Hot"', 'v2:com.boomman.bomber.classic:1:2', 'com.boomman.bomber.classic', '', '3.9', '1093', '1.1', 'The game Boom Man Classic | Boom Free has simple gameplay, addictive. Boom match award playing time\nlabor and time free time, game designers should play according to the game screen will more attractive. Each game level is a challenge, to pass the screen, you are provided support the extremely useful items, each item has its own function, so when you play so depending improvise to destroy the monster.\n\nMain features of game Boom Man Classic | Boom Free:\n+ Full HD interface\n+ Sounds fun\n+ Supports multiple screen size and low profile phone\n+ There are more screens\n+ There are many types of monsters with very smart AI\n+ You can switch the type of control (control Support 2 style)\n+ There are 2 characters: You can change to suit personal preferences\n+ Shop System has many items\n+ Good little RAM\n+ Good performance\n+ Multiplay: Support for 2 people to play through Bluetooth or Wi-Fi connection (this feature\nwill update in next version)\n\nHow to play of game Boom Man Classic | Boom Free: Move the character to follow the path is not blocked, if it meets the block box\nboom set to blow up the box, kill monsters and find the key. Each screen you need\nto destroy all monsters and collect all the coins required, you will be rewarded.\nThe coin in the game will support you purchase the items, please use your coins properly\nconsolidation. Let''s go find a clever way, placing bombs correctly.\n\nGood people will have leisure time fun with Boom Man Classic | Boom HD.\n\nRecent changes:\n- Boom Man Classic | Boom Free a famous PC game now available on android market, with beautiful graphics, FULL HD interface, vivid sound.\n - With 24 challenges from easy to difficult, not easy to win\n - With two categories characters: male and female, suitable for all genders, all ages\n\nContent rating: Everyone', '50,000-250,000', 'Boom Man Classic | Boom Free with HD graphics, vivid sound and new gameplay', 'Action', 'GAME', 'https://lh5.ggpht.com/qZnuvFvUzxeHTmX3wLZuC9khc3e5JBTVpqcBbhT3fVUhrxqsu3TBdlWfcM_7JQl0sX7j=h310', 'https://lh3.ggpht.com/FnkWbRatbyaENICa_FtR87rqXgr7wQDAOUbYE_arDuezUaifUuiu_d6NacgmLYEf2Yra=h310', 'https://lh4.ggpht.com/I8xUhGg418x0-0WSZdsZoSWQPmpQGqOuw6DblRdE4PNy6-7jvdXVGnHszLnjhT1FHag=h310', 'https://lh4.ggpht.com/DKtZemmOWCuM7CR0-hlQf5qxUtbxWm-Y5Zqs-6CebrULZ3sejTqhIIVVi0sl6RRQ0w=h310', 'https://lh5.ggpht.com/Z6XvQVp7XMtvc5f-fP-l9NqLNuJk7OdRZ-oDKS3OSQED2cjz9jAzylgDMCZ23lmhculJ=h310');
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `App_iOS` (
   `ScreenShot4` text,
   `ScreenShot5` text,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `App_iOS`
@@ -130,6 +132,20 @@ CREATE TABLE IF NOT EXISTS `Review_Android` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Review_Android_History`
+--
+
+CREATE TABLE IF NOT EXISTS `Review_Android_History` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Rating` text,
+  `UpdatedDate` date DEFAULT NULL,
+  `PackageName` text,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Review_iOS`
 --
 
@@ -142,6 +158,20 @@ CREATE TABLE IF NOT EXISTS `Review_iOS` (
   `Rating` text,
   `Version` text,
   `UpdateDate` text,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Review_iOS_History`
+--
+
+CREATE TABLE IF NOT EXISTS `Review_iOS_History` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Rating` text,
+  `UpdatedDate` date DEFAULT NULL,
+  `TrackId` text,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -201,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `User` (
 --
 
 INSERT INTO `User` (`Id`, `Firstname`, `Lastname`, `Username`, `Password`, `Email`, `Role_Id`) VALUES
-(1, 'Long', 'Nguyen', 'long.nguyen', 'e10adc3949ba59abbe56e057f20f883e', 'long.nguyen@c-mg.com', 1),
+(1, 'Long', 'Nguyen', 'long.nguyen', 'e10adc3949ba59abbe56e057f20f883e', 'long.nd144@gmail.com', 1),
 (2, 'Ece', 'Calikus', 'ece.calikus', 'e10adc3949ba59abbe56e057f20f883e', 'ece.calikus@gmail.com', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
