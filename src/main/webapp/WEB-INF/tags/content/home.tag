@@ -106,7 +106,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="video">
-            <iframe width="100%" height="" src="https://www.youtube.com/embed/y-waTi8BPdk" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="" src="https://www.youtube.com/embed/USclb8cPSAU" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="row_5">
             <div class="col-md-6">
