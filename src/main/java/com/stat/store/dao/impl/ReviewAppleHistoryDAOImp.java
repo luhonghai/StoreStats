@@ -13,7 +13,7 @@ import java.util.List;
 @Stateless(name = "AppleHistoryEJB")
 public class ReviewAppleHistoryDAOImp extends AbstractDAO<ReviewIOsHistory, Integer> implements ReviewAppleHistoryDAO {
 
-    protected ReviewAppleHistoryDAOImp() {
+    public ReviewAppleHistoryDAOImp() {
         super(ReviewIOsHistory.class);
     }
 

@@ -6,11 +6,15 @@
 <%@ tag import="com.stat.store.entity.ReviewAndroid" %>
 <%@ tag import="java.util.List" %>
 <%@ tag import="com.stat.store.util.DateUtil" %>
+<%@ tag import="com.stat.store.entity.ReviewAndroidHistory" %>
+<%@ tag import="com.stat.store.service.AndroidHistoryService" %>
 <%
     String account = "guest";
     boolean isExisted = false;
     AndroidService androidService = new AndroidService();
     ReviewAndroidService reviewService = new ReviewAndroidService();
+    AndroidHistoryService androidHistoryService = new AndroidHistoryService();
+
     User member = (User)session.getAttribute("member");
     String package_name = request.getParameter("package_name");
     String app_id = request.getParameter("app_id");
@@ -20,6 +24,7 @@
     }
     AppAndroid app = androidService.getAppFromServiceByPackageName(package_name);
     List<ReviewAndroid> listReview = reviewService.getCommentsFromServiceByAppId(app_id);
+    List<ReviewAndroidHistory> listRating = androidHistoryService.getReviewByPackageName(package_name);
 %>
 
 
@@ -58,7 +63,7 @@
             <%}else{%>
             <div class="button-follow"><a trackid="<%=app.getAppId()%>" id="btnFollow" class="hvr-shutter-out-horizontal">Follow</a></div>
             <%}%>
-
+            <div class="button-follow"><a trackid="<%=app.getAppId()%>" id="btnRating" class="hvr-shutter-out-horizontal" style="margin-top:-40px;margin-left:120px;">Rating History</a></div>
         </div>
         <div class="clearfix"></div>
         <p class="m_4"><%=app.getDescription() != null? app.getDescription() : ""%></p>
@@ -136,9 +141,70 @@
     <div class="clearfix"></div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:750px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Rating History</h4>
+            </div>
+            <div class="modal-body" style="width:750px;">
+                <div style="width:700px;overflow: hidden;">
+                    <div id="chart-container" style="width: 700px;height: 400px;float: left;"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+    var currentLineData;
+    function createChart() {
+        <%if(listRating != null && listRating.size() > 0){%>
+        currentLineData = [];
+        var label = [];
+        var data = [];
+        <%for(ReviewAndroidHistory review: listRating){%>
+            label.push("<%=review.getUpdatedDate()%>");
+            data.push(parseFloat(<%=review.getRating()%>));
+        <%}%>
+        $("#chart-container").empty();
+        $("#chart-container").html("<canvas id='chart-rating' width='700px' height='400px'></canvas>");
+
+        currentLineData.push({
+            labels: label,
+            datasets: [
+            {
+                label: "Rating History",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: data
+            }]
+            });
+        <%}%>
+        $('#myModal').modal("show");
+    }
+
     $(document).ready(function(){
         var account = "<%=account%>";
+
+        $('#myModal').on('shown.bs.modal', function () {
+            if (typeof  currentLineData != 'undefined') {
+                new Chart($("#chart-rating").get(0).getContext("2d")).Line(currentLineData[0]);
+            }
+        });
+
+        $("#btnRating").click(function(){
+            createChart();
+        });
 
         $("#btnUnFollow").click(function(){
             if(account == "guest"){
@@ -153,7 +219,7 @@
                     success: function(result){
                         if(result == "done"){
                             $("#btnUnFollow").attr("id", "btnFollow");
-                            $("#btnFollow").html("<span> </span>Follow");
+                            $("#btnFollow").text("Follow");
                         }else{
                             alert("There is an error while processing data");
                         }
@@ -176,7 +242,7 @@
                     success: function(result){
                         if(result == "done"){
                             $("#btnFollow").attr("id", "btnUnFollow");
-                            $("#btnUnFollow").html("<span> </span>Unfollow");
+                            $("#btnUnFollow").text("Unfollow");
                         }else{
                             alert("There is an error while processing data");
                         }

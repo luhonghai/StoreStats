@@ -3,13 +3,16 @@
 <%@ tag import="com.stat.store.entity.User" %>
 <%@ tag import="com.stat.store.entity.ReviewIOs" %>
 <%@ tag import="java.util.List" %>
-<%@ tag import="com.stat.store.dao.ReviewAppleDAO" %>
 <%@ tag import="com.stat.store.service.ReviewAppleService" %>
+<%@ tag import="com.stat.store.service.AppleHistoryService" %>
+<%@ tag import="com.stat.store.entity.ReviewIOsHistory" %>
 <%
     String account = "guest";
     boolean isExisted = false;
     AppleService appleService = new AppleService();
     ReviewAppleService reviewService = new ReviewAppleService();
+    AppleHistoryService appleHistoryService = new AppleHistoryService();
+
     User member = (User)session.getAttribute("member");
     String track_id = request.getParameter("track_id");
     if(member != null){
@@ -18,7 +21,8 @@
     }
     AppIOs app = appleService.getAppDetail(track_id);
     List<ReviewIOs> listReview = reviewService.getReviewsFromService(track_id);
-    System.out.println("list review size: " + listReview.size());
+    //System.out.println("list review size: " + listReview.size());
+    List<ReviewIOsHistory> listRating = appleHistoryService.geReviewHistoryByTrackId(track_id);
 %>
 <div class="movie_top">
     <div class="col-md-9 movie_box">
@@ -55,6 +59,7 @@
             <%}else{%>
             <div class="button-follow"><a trackid="<%=app.getTrackId()%>" id="btnFollow" class="hvr-shutter-out-horizontal">Follow</a></div>
             <%}%>
+            <div class="button-follow"><a trackid="<%=app.getTrackId()%>" id="btnRating" class="hvr-shutter-out-horizontal" style="margin-top:-40px;margin-left:120px;">Rating History</a></div>
 
         </div>
         <div class="clearfix"></div>
@@ -133,9 +138,70 @@
     <div class="clearfix"></div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:750px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Rating History</h4>
+            </div>
+            <div class="modal-body" style="width:750px;">
+                <div style="width:700px;overflow: hidden;">
+                    <div id="chart-container" style="width: 700px;height: 400px;float: left;"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+    var currentLineData;
+    function createChart() {
+        <%if(listRating != null && listRating.size() > 0){%>
+        currentLineData = [];
+        var label = [];
+        var data = [];
+        <%for(ReviewIOsHistory review: listRating){%>
+        label.push("<%=review.getUpdatedDate()%>");
+        data.push(parseFloat(<%=review.getRating()%>));
+        <%}%>
+        $("#chart-container").empty();
+        $("#chart-container").html("<canvas id='chart-rating' width='700px' height='400px'></canvas>");
+
+        currentLineData.push({
+            labels: label,
+            datasets: [
+                {
+                    label: "Rating History",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: data
+                }]
+        });
+        <%}%>
+        $('#myModal').modal("show");
+    }
+
     $(document).ready(function(){
         var account = "<%=account%>";
+
+        $('#myModal').on('shown.bs.modal', function () {
+            if (typeof  currentLineData != 'undefined') {
+                new Chart($("#chart-rating").get(0).getContext("2d")).Line(currentLineData[0]);
+            }
+        });
+
+        $("#btnRating").click(function(){
+            createChart();
+        });
 
         $("#btnUnFollow").click(function(){
             if(account == "guest"){
