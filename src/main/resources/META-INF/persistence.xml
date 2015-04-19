@@ -2,8 +2,8 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-    <persistence-unit name="SSPU" transaction-type="JTA">
-        <jta-data-source>java:/SSDS</jta-data-source>
+    <persistence-unit name="SSPU" transaction-type="RESOURCE_LOCAL">
+        <!--<jta-data-source>java:/SSDS</jta-data-source>-->
         <class>com.stat.store.entity.AppAndroid</class>
         <class>com.stat.store.entity.AppIOs</class>
         <class>com.stat.store.entity.Log</class>
@@ -18,6 +18,10 @@
         <properties>
             <property name="showSql" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="toplink.jdbc.url" value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/jbossas"/>
+            <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="toplink.jdbc.user" value="adminFAvDtMl"/>
+            <property name="toplink.jdbc.password" value="L6c5kZqjw3hR"/>
         </properties>
     </persistence-unit>
 </persistence>
