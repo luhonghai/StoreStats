@@ -1,6 +1,5 @@
 package com.stat.store.dao;
 
-import com.stat.store.entity.ReviewIOs;
 import com.stat.store.entity.ReviewIOsHistory;
 
 import javax.ejb.Remote;
