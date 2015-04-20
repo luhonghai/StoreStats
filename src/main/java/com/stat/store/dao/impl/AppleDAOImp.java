@@ -84,6 +84,7 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
             }
         } catch (Exception e) {
             e.printStackTrace();
+
         }
 
         return appList;
@@ -92,7 +93,7 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
     @Override
     public AppIOs getAppDetailService(String url) {
         // Parse JSON - https://itunes.apple.com/lookup?id=track_id
-        AppIOs app = new AppIOs();
+        AppIOs app = null;
         try {
             URL http = new URL(url);
             HttpURLConnection req = (HttpURLConnection) http.openConnection();
@@ -103,64 +104,66 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
             JSONObject jsonObject = (JSONObject) jsonParser.parse(new InputStreamReader((InputStream) req.getContent()));
 
             JSONArray jsonArray = (JSONArray) jsonObject.get("results");
+            if(jsonArray != null && jsonArray.size() > 0){
+                app = new AppIOs();
+                for (Iterator<JSONObject> i = jsonArray.iterator(); i.hasNext(); ) {
+                    JSONObject jsonApp = i.next();
 
-            for (Iterator<JSONObject> i = jsonArray.iterator(); i.hasNext(); ) {
-                JSONObject jsonApp = i.next();
-
-                if (jsonApp.get("artworkUrl60") != null)
-                    app.setArtworkUrl((String) jsonApp.get("artworkUrl512"));
-                if (jsonApp.get("averageUserRating") != null)
-                    app.setAverageUserRating(jsonApp.get("averageUserRating") + "");
-                if (jsonApp.get("bundleId") != null)
-                    app.setBundleId(jsonApp.get("bundleId") + "");
-                if (jsonApp.get("description") != null)
-                    app.setDescription((String) jsonApp.get("description"));
-                if (jsonApp.get("price") != null)
-                    app.setPrice((Double) jsonApp.get("price"));
-                if (jsonApp.get("releaseDate") != null)
-                    app.setReleaseDate((String) jsonApp.get("releaseDate"));
-                if (jsonApp.get("releaseNotes") != null)
-                    app.setReleaseNotes((String) jsonApp.get("releaseNotes"));
-                if (jsonApp.get("trackName") != null)
-                    app.setTrackName((String) jsonApp.get("trackName"));
-                if (jsonApp.get("sellerName") != null)
-                    app.setSellerName((String) jsonApp.get("sellerName"));
-                if (jsonApp.get("trackId") != null)
-                    app.setTrackId(jsonApp.get("trackId") + "");
-                if (jsonApp.get("artistId") != null)
-                    app.setArtistId(jsonApp.get("artistId") + "");
-                if (jsonApp.get("trackContentRating") != null)
-                    app.setTrackContentRating((String) jsonApp.get("trackContentRating"));
-                if (jsonApp.get("userRatingCount") != null)
-                    app.setUserRatingCount(jsonApp.get("userRatingCount") + "");
-                if (jsonApp.get("version") != null)
-                    app.setVersion((String) jsonApp.get("version"));
-                if (jsonApp.get("screenshotUrls") != null) {
-                    JSONArray screenshots = (JSONArray) jsonApp.get("screenshotUrls");
-                    if (screenshots.size() == 1) {
-                        app.setScreenShot1(screenshots.get(0) + "");
-                    } else if (screenshots.size() == 2) {
-                        app.setScreenShot1(screenshots.get(0) + "");
-                        app.setScreenShot2(screenshots.get(1) + "");
-                    } else if (screenshots.size() == 3) {
-                        app.setScreenShot1(screenshots.get(0) + "");
-                        app.setScreenShot2(screenshots.get(1) + "");
-                        app.setScreenShot3(screenshots.get(2) + "");
-                    } else if (screenshots.size() == 4) {
-                        app.setScreenShot1(screenshots.get(0) + "");
-                        app.setScreenShot2(screenshots.get(1) + "");
-                        app.setScreenShot3(screenshots.get(2) + "");
-                        app.setScreenShot4(screenshots.get(3) + "");
-                    } else if (screenshots.size() == 5) {
-                        app.setScreenShot1(screenshots.get(0) + "");
-                        app.setScreenShot2(screenshots.get(1) + "");
-                        app.setScreenShot3(screenshots.get(2) + "");
-                        app.setScreenShot4(screenshots.get(3) + "");
-                        app.setScreenShot5(screenshots.get(4) + "");
+                    if (jsonApp.get("artworkUrl60") != null)
+                        app.setArtworkUrl((String) jsonApp.get("artworkUrl512"));
+                    if (jsonApp.get("averageUserRating") != null)
+                        app.setAverageUserRating(jsonApp.get("averageUserRating") + "");
+                    if (jsonApp.get("bundleId") != null)
+                        app.setBundleId(jsonApp.get("bundleId") + "");
+                    if (jsonApp.get("description") != null)
+                        app.setDescription((String) jsonApp.get("description"));
+                    if (jsonApp.get("price") != null)
+                        app.setPrice((Double) jsonApp.get("price"));
+                    if (jsonApp.get("releaseDate") != null)
+                        app.setReleaseDate((String) jsonApp.get("releaseDate"));
+                    if (jsonApp.get("releaseNotes") != null)
+                        app.setReleaseNotes((String) jsonApp.get("releaseNotes"));
+                    if (jsonApp.get("trackName") != null)
+                        app.setTrackName((String) jsonApp.get("trackName"));
+                    if (jsonApp.get("sellerName") != null)
+                        app.setSellerName((String) jsonApp.get("sellerName"));
+                    if (jsonApp.get("trackId") != null)
+                        app.setTrackId(jsonApp.get("trackId") + "");
+                    if (jsonApp.get("artistId") != null)
+                        app.setArtistId(jsonApp.get("artistId") + "");
+                    if (jsonApp.get("trackContentRating") != null)
+                        app.setTrackContentRating((String) jsonApp.get("trackContentRating"));
+                    if (jsonApp.get("userRatingCount") != null)
+                        app.setUserRatingCount(jsonApp.get("userRatingCount") + "");
+                    if (jsonApp.get("version") != null)
+                        app.setVersion((String) jsonApp.get("version"));
+                    if (jsonApp.get("screenshotUrls") != null) {
+                        JSONArray screenshots = (JSONArray) jsonApp.get("screenshotUrls");
+                        if (screenshots.size() == 1) {
+                            app.setScreenShot1(screenshots.get(0) + "");
+                        } else if (screenshots.size() == 2) {
+                            app.setScreenShot1(screenshots.get(0) + "");
+                            app.setScreenShot2(screenshots.get(1) + "");
+                        } else if (screenshots.size() == 3) {
+                            app.setScreenShot1(screenshots.get(0) + "");
+                            app.setScreenShot2(screenshots.get(1) + "");
+                            app.setScreenShot3(screenshots.get(2) + "");
+                        } else if (screenshots.size() == 4) {
+                            app.setScreenShot1(screenshots.get(0) + "");
+                            app.setScreenShot2(screenshots.get(1) + "");
+                            app.setScreenShot3(screenshots.get(2) + "");
+                            app.setScreenShot4(screenshots.get(3) + "");
+                        } else if (screenshots.size() == 5) {
+                            app.setScreenShot1(screenshots.get(0) + "");
+                            app.setScreenShot2(screenshots.get(1) + "");
+                            app.setScreenShot3(screenshots.get(2) + "");
+                            app.setScreenShot4(screenshots.get(3) + "");
+                            app.setScreenShot5(screenshots.get(4) + "");
+                        }
                     }
                 }
-
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

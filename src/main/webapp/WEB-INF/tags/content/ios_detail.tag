@@ -21,9 +21,10 @@
     }
     AppIOs app = appleService.getAppDetail(track_id);
     List<ReviewIOs> listReview = reviewService.getReviewsFromService(track_id);
-    //System.out.println("list review size: " + listReview.size());
     List<ReviewIOsHistory> listRating = appleHistoryService.geReviewHistoryByTrackId(track_id);
 %>
+
+<%if(app != null){%>
 <div class="movie_top">
     <div class="col-md-9 movie_box">
         <div class="grid images_3_of_2">
@@ -249,3 +250,10 @@
         });
     });
 </script>
+<%}else{%>
+<div class="movie_top" style="height:30px;">
+    <div class="col-md-9 movie_box">
+        <h1>This app was removed from App Store</h1>
+    </div>
+</div>
+<%}%>
