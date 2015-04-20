@@ -59,4 +59,8 @@ public class AppleService {
     public List<AppIOs> getAllFollowedApp(){
         return (List<AppIOs>) appleDAO.findAll();
     }
+
+    public List<AppIOs> getTop10App(){
+        return appleDAO.getTop10FreeApp();
+    }
 }

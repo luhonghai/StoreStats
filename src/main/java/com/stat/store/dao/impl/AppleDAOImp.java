@@ -3,6 +3,11 @@ package com.stat.store.dao.impl;
 import com.stat.store.dao.AbstractDAO;
 import com.stat.store.dao.AppleDAO;
 import com.stat.store.entity.AppIOs;
+import com.sun.syndication.feed.synd.SyndEntryImpl;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
+import org.jdom.Element;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -29,7 +34,7 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
     @Override
     public List<AppIOs> getAppsFromService(String uri) {
         // Parse JSON - https://itunes.apple.com/search?term=keyword&country=tr&entity=software&limit=100
-        List<AppIOs> appList=new ArrayList<AppIOs>();
+        List<AppIOs> appList = new ArrayList<AppIOs>();
 
         try {
             URL url = new URL(uri);
@@ -42,16 +47,16 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
 
             JSONArray jsonArray = (JSONArray) jsonObject.get("results");
 
-            for(Iterator<JSONObject> i = jsonArray.iterator(); i.hasNext(); ) {
+            for (Iterator<JSONObject> i = jsonArray.iterator(); i.hasNext(); ) {
                 JSONObject jsonApp = i.next();
                 AppIOs app = new AppIOs();
 
                 if (jsonApp.get("artworkUrl60") != null)
                     app.setArtworkUrl((String) jsonApp.get("artworkUrl512"));
                 if (jsonApp.get("averageUserRating") != null)
-                    app.setAverageUserRating(jsonApp.get("averageUserRating")+"");
+                    app.setAverageUserRating(jsonApp.get("averageUserRating") + "");
                 if (jsonApp.get("bundleId") != null)
-                    app.setBundleId(jsonApp.get("bundleId")+"");
+                    app.setBundleId(jsonApp.get("bundleId") + "");
                 if (jsonApp.get("description") != null)
                     app.setDescription((String) jsonApp.get("description"));
                 if (jsonApp.get("price") != null)
@@ -65,19 +70,19 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
                 if (jsonApp.get("sellerName") != null)
                     app.setSellerName((String) jsonApp.get("sellerName"));
                 if (jsonApp.get("trackId") != null)
-                    app.setTrackId(jsonApp.get("trackId")+"");
+                    app.setTrackId(jsonApp.get("trackId") + "");
                 if (jsonApp.get("artistId") != null)
-                    app.setArtistId(jsonApp.get("artistId")+"");
+                    app.setArtistId(jsonApp.get("artistId") + "");
                 if (jsonApp.get("trackContentRating") != null)
                     app.setTrackContentRating((String) jsonApp.get("trackContentRating"));
                 if (jsonApp.get("userRatingCount") != null)
-                    app.setUserRatingCount(jsonApp.get("userRatingCount")+"");
+                    app.setUserRatingCount(jsonApp.get("userRatingCount") + "");
                 if (jsonApp.get("version") != null)
                     app.setVersion((String) jsonApp.get("version"));
 
                 appList.add(app);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -99,15 +104,15 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
 
             JSONArray jsonArray = (JSONArray) jsonObject.get("results");
 
-            for(Iterator<JSONObject> i = jsonArray.iterator(); i.hasNext(); ) {
+            for (Iterator<JSONObject> i = jsonArray.iterator(); i.hasNext(); ) {
                 JSONObject jsonApp = i.next();
 
                 if (jsonApp.get("artworkUrl60") != null)
                     app.setArtworkUrl((String) jsonApp.get("artworkUrl512"));
                 if (jsonApp.get("averageUserRating") != null)
-                    app.setAverageUserRating(jsonApp.get("averageUserRating")+"");
+                    app.setAverageUserRating(jsonApp.get("averageUserRating") + "");
                 if (jsonApp.get("bundleId") != null)
-                    app.setBundleId(jsonApp.get("bundleId")+"");
+                    app.setBundleId(jsonApp.get("bundleId") + "");
                 if (jsonApp.get("description") != null)
                     app.setDescription((String) jsonApp.get("description"));
                 if (jsonApp.get("price") != null)
@@ -121,42 +126,42 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
                 if (jsonApp.get("sellerName") != null)
                     app.setSellerName((String) jsonApp.get("sellerName"));
                 if (jsonApp.get("trackId") != null)
-                    app.setTrackId(jsonApp.get("trackId")+"");
+                    app.setTrackId(jsonApp.get("trackId") + "");
                 if (jsonApp.get("artistId") != null)
-                    app.setArtistId(jsonApp.get("artistId")+"");
+                    app.setArtistId(jsonApp.get("artistId") + "");
                 if (jsonApp.get("trackContentRating") != null)
                     app.setTrackContentRating((String) jsonApp.get("trackContentRating"));
                 if (jsonApp.get("userRatingCount") != null)
-                    app.setUserRatingCount(jsonApp.get("userRatingCount")+"");
+                    app.setUserRatingCount(jsonApp.get("userRatingCount") + "");
                 if (jsonApp.get("version") != null)
                     app.setVersion((String) jsonApp.get("version"));
-                if (jsonApp.get("screenshotUrls") != null){
+                if (jsonApp.get("screenshotUrls") != null) {
                     JSONArray screenshots = (JSONArray) jsonApp.get("screenshotUrls");
-                    if(screenshots.size() == 1){
-                        app.setScreenShot1(screenshots.get(0)+"");
-                    }else if(screenshots.size() == 2){
-                        app.setScreenShot1(screenshots.get(0)+"");
-                        app.setScreenShot2(screenshots.get(1)+"");
-                    }else if(screenshots.size() == 3){
-                        app.setScreenShot1(screenshots.get(0)+"");
-                        app.setScreenShot2(screenshots.get(1)+"");
-                        app.setScreenShot3(screenshots.get(2)+"");
-                    }else if(screenshots.size() == 4){
-                        app.setScreenShot1(screenshots.get(0)+"");
-                        app.setScreenShot2(screenshots.get(1)+"");
-                        app.setScreenShot3(screenshots.get(2)+"");
-                        app.setScreenShot4(screenshots.get(3)+"");
-                    }else if(screenshots.size() == 5){
-                        app.setScreenShot1(screenshots.get(0)+"");
-                        app.setScreenShot2(screenshots.get(1)+"");
-                        app.setScreenShot3(screenshots.get(2)+"");
-                        app.setScreenShot4(screenshots.get(3)+"");
-                        app.setScreenShot5(screenshots.get(4)+"");
+                    if (screenshots.size() == 1) {
+                        app.setScreenShot1(screenshots.get(0) + "");
+                    } else if (screenshots.size() == 2) {
+                        app.setScreenShot1(screenshots.get(0) + "");
+                        app.setScreenShot2(screenshots.get(1) + "");
+                    } else if (screenshots.size() == 3) {
+                        app.setScreenShot1(screenshots.get(0) + "");
+                        app.setScreenShot2(screenshots.get(1) + "");
+                        app.setScreenShot3(screenshots.get(2) + "");
+                    } else if (screenshots.size() == 4) {
+                        app.setScreenShot1(screenshots.get(0) + "");
+                        app.setScreenShot2(screenshots.get(1) + "");
+                        app.setScreenShot3(screenshots.get(2) + "");
+                        app.setScreenShot4(screenshots.get(3) + "");
+                    } else if (screenshots.size() == 5) {
+                        app.setScreenShot1(screenshots.get(0) + "");
+                        app.setScreenShot2(screenshots.get(1) + "");
+                        app.setScreenShot3(screenshots.get(2) + "");
+                        app.setScreenShot4(screenshots.get(3) + "");
+                        app.setScreenShot5(screenshots.get(4) + "");
                     }
                 }
 
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -165,35 +170,35 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
 
     @Override
     public AppIOs getAppByArtworkUrl(String artwork) {
-        return (AppIOs)getEm().createNamedQuery("AppIOS.GetAppByArtwork")
+        return (AppIOs) getEm().createNamedQuery("AppIOS.GetAppByArtwork")
                 .setParameter("artworkUrl", artwork).getSingleResult();
     }
 
     @Override
     public AppIOs getAppByAppName(String appName) {
-        return (AppIOs)getEm().createNamedQuery("AppIOS.GetAppByAppName")
+        return (AppIOs) getEm().createNamedQuery("AppIOS.GetAppByAppName")
                 .setParameter("trackName", appName).getSingleResult();
     }
 
     @Override
     public AppIOs getAppByTrackId(String track_id) {
-        return (AppIOs)getEm().createNamedQuery("AppIOS.GetAppByTrackID")
+        return (AppIOs) getEm().createNamedQuery("AppIOS.GetAppByTrackID")
                 .setParameter("trackId", track_id).getSingleResult();
     }
 
     @Override
     public List<AppIOs> getAppsBySeller(String artist_id) {
-        return (List<AppIOs>)getEm().createNamedQuery("AppIOS.GetAppBySellerID")
+        return (List<AppIOs>) getEm().createNamedQuery("AppIOS.GetAppBySellerID")
                 .setParameter("artistId", artist_id).getResultList();
     }
 
     @Override
     public boolean checkExistedApp(String track_id, int user_id) {
-        try{
-            AppIOs app = (AppIOs)getEm().createNamedQuery("AppIOS.CheckExisted").setParameter("track_id",track_id)
+        try {
+            AppIOs app = (AppIOs) getEm().createNamedQuery("AppIOS.CheckExisted").setParameter("track_id", track_id)
                     .setParameter("user_id", user_id).getSingleResult();
             return true;
-        }catch(Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -202,7 +207,7 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
     public boolean deleteAppById(String track_id, int user_id) {
         int result = getEm().createNamedQuery("AppIOS.UnFollow").setParameter("trackId", track_id)
                 .setParameter("user_id", user_id).executeUpdate();
-        if(result > 0){
+        if (result > 0) {
             return true;
         }
         return false;
@@ -210,6 +215,33 @@ public class AppleDAOImp extends AbstractDAO<AppIOs, Integer> implements AppleDA
 
     @Override
     public List<AppIOs> getAppsByUserId(int user_id) {
-        return (List<AppIOs>)getEm().createNamedQuery("AppIOS.GetAppOfUser").setParameter("user_id", user_id).getResultList();
+        return (List<AppIOs>) getEm().createNamedQuery("AppIOS.GetAppOfUser").setParameter("user_id", user_id).getResultList();
+    }
+
+    @Override
+    public List<AppIOs> getTop10FreeApp() {
+        String url = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml";
+        List<AppIOs> iosList = new ArrayList<AppIOs>();
+        SyndFeedInput syndFeedInput = new SyndFeedInput();
+        SyndFeed syndFeed;
+
+        try {
+            XmlReader xmlReader = new XmlReader(new URL(url));
+            syndFeed = syndFeedInput.build(xmlReader);
+
+            Iterator it = syndFeed.getEntries().iterator();
+            while (it.hasNext()) {
+                SyndEntryImpl feed = (SyndEntryImpl) it.next();
+
+
+                AppIOs app = getAppDetailService("https://itunes.apple.com/lookup?id="+feed.getLink().substring(feed.getLink().indexOf("id")+2, feed.getLink().indexOf("?")));
+
+                iosList.add(app);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return iosList;
     }
 }

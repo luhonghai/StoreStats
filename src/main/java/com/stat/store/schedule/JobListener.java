@@ -6,6 +6,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import static org.quartz.CronScheduleBuilder.dailyAtHourAndMinute;
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 
@@ -26,7 +27,7 @@ public class JobListener implements ServletContextListener {
             // Create a Trigger that fires everyday at mid-night.
             Trigger trigger = newTrigger()
                     .withIdentity("TriggerName", "Group")
-                    .withSchedule(CronScheduleBuilder.cronSchedule("0 0 0 * * ?"))
+                    .withSchedule(dailyAtHourAndMinute(23, 0))
                     .build();
 
             // Setup the Job and Trigger with Scheduler & schedule jobs

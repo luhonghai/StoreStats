@@ -102,6 +102,21 @@
             <version>2.2.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.gc.android.market.api</groupId>
+            <artifactId>androidmarketapi</artifactId>
+            <version>0.6</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/androidmarketapi-0.6.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.objectdb</groupId>
+            <artifactId>objectdb</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/objectdb.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
     <build>

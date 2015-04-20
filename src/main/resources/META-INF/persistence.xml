@@ -18,6 +18,10 @@
         <properties>
             <property name="showSql" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <!--<property name="toplink.jdbc.url" value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/jbossas"/>
+            <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="toplink.jdbc.user" value="adminFAvDtMl"/>
+            <property name="toplink.jdbc.password" value="L6c5kZqjw3hR"/>-->
         </properties>
     </persistence-unit>
 </persistence>
