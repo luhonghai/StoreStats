@@ -106,6 +106,7 @@
             <artifactId>objectdb</artifactId>
             <version>0.6</version>
             <scope>system</scope>
+            <version>1.0</version>
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/objectdb.jar</systemPath>
         </dependency>
 
