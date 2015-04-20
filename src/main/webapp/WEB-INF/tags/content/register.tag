@@ -1,3 +1,4 @@
+<script src="js/user.js"></script>
 <div class="register">
     <form>
         <div class="register-top-grid">
