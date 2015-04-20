@@ -20,11 +20,10 @@ import java.io.PrintWriter;
 @WebServlet(name = "UserHandler", asyncSupported = true, urlPatterns = {"/UserHandler"})
 public class UserHandler extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = null;
+        PrintWriter out =response.getWriter();
         UserService userService = new UserService();
         HttpSession session = request.getSession();
         try {
-            out = response.getWriter();
             String action = request.getParameter("action");
             if(action.equalsIgnoreCase("login")){
                 String username = request.getParameter("_request_username");
@@ -60,11 +59,13 @@ public class UserHandler extends HttpServlet {
             } else if(action.equalsIgnoreCase("logout")){
                 session.setAttribute("member", null);
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
             }
-        } catch (DAOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             session.setAttribute("message", "Could not complete process");
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
         } finally{
             if(out != null)
             out.close();

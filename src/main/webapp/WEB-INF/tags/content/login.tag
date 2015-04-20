@@ -10,7 +10,17 @@
         <h3>Registered Customers</h3>
 
         <p>If you have an account with us, please log in.</p>
-
+        <%
+            if (session.getAttribute("message") != null) {
+        %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Warning!</strong> <%=session.getAttribute("message")%>
+        </div>
+        <%
+            session.setAttribute("message", null);
+            }
+        %>
         <form action="<%=request.getContextPath()%>/UserHandler" method="POST">
             <div>
                 <span>Username<label>*</label></span>
