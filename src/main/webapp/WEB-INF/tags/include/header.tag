@@ -18,7 +18,7 @@
     <div class="col-sm-3 header_right">
         <ul class="header_right_box">
             <%if(member != null){%>
-            <li><img style="width:35px;height: 35px;" src="http://www.gravatar.com/avatar/<%=MD5Helper.md5Hex(member.getEmail())%>" alt=""/></li>
+            <li><img style="width:35px;height: 35px;" src="http://www.gravatar.com/avatar/<%=MD5Helper.md5Hex(member.getEmail())%>?d=mm" alt=""/></li>
             <li><p><a href="<%=request.getContextPath()%>/favourite.jsp"><%=member.getFirstname()%> <%=member.getLastname()%></a>&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/UserHandler?action=logout" title="Logout"><i class="fa fa-sign-out" style="color: red"></i></a></p></li>
             <%}else{%>
             <li><p><a href="<%=request.getContextPath()%>/login.jsp">Login</a>&nbsp;|&nbsp;<a href="<%=request.getContextPath()%>/register.jsp">Register</a></p></li>

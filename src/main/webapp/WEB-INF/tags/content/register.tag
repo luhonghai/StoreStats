@@ -39,13 +39,12 @@
             </div>
             <div class="clearfix"></div>
         </div>
-    </form>
     <div class="clearfix"></div>
     <div class="register-but">
-        <form>
             <input type="button" value="submit" id="submit">
-
             <div class="clearfix"></div>
-        </form>
     </div>
+    </form>
 </div>
+
+<script src="<%=request.getContextPath()%>/js/user.js"></script>

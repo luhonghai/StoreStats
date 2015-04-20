@@ -5,6 +5,13 @@ import org.quartz.impl.StdSchedulerFactory;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
 
 import static org.quartz.CronScheduleBuilder.dailyAtHourAndMinute;
 import static org.quartz.JobBuilder.newJob;
@@ -13,12 +20,14 @@ import static org.quartz.TriggerBuilder.newTrigger;
 /**
  * Created by longnguyen on 4/18/15.
  */
-public class JobListener implements ServletContextListener {
+@WebServlet(name = "JobListener", asyncSupported = true, urlPatterns = {"/JobListener"}, loadOnStartup = 1)
+public class JobListener extends HttpServlet {
     Scheduler scheduler = null;
 
     @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("Context Initialized");
+    public void init() throws ServletException {
+        super.init();
+        System.out.println("Start init schedule job");
 
         try {
             // Setup the Job class and the Job group
@@ -37,22 +46,25 @@ public class JobListener implements ServletContextListener {
         }
         catch (SchedulerException e) {
             e.printStackTrace();
+        } finally {
+            System.out.println("Complete init schedule job");
         }
     }
 
-    /**
-     * Receives notification that the ServletContext is about to be
-     * shut down.
-     * <p/>
-     * <p>All servlets and filters will have been destroyed before any
-     * ServletContextListeners are notified of context
-     * destruction.
-     *
-     * @param sce the ServletContextEvent containing the ServletContext
-     *            that is being destroyed
-     */
     @Override
-    public void contextDestroyed(ServletContextEvent sce) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ReviewHistoryCron cron = new ReviewHistoryCron();
+        try {
+            cron.execute(null);
+        } catch (JobExecutionException e) {
+            e.printStackTrace();
+            resp.getWriter().print("error: " + e.getMessage());
+        }
+        resp.getWriter().print("done");
+    }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
     }
 }
