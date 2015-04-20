@@ -24,35 +24,30 @@ $(document).ready(function(){
     }
 
     function register(email, fname, lname, username, password, action){
-        var xhr;
-        if (window.XMLHttpRequest) {
-            xhr = new XMLHttpRequest();
-        } else if (window.ActiveXObject) {
-            xhr = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        var data = "email=" + email + "&fname=" + fname + "&lname=" + lname + "&password=" + password +"&username=" + username + "&action=" + action;
-        xhr.open("POST", servletUrl, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send(data);
-        xhr.onreadystatechange = display_data;
-        function display_data() {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    console.log(xhr.responseText);
-                    if(xhr.responseText != "invalid"){
-                        window.location = "login.jsp";
-                    }else{
-                        alert("Please try again!");
-                    }
-                } else {
-                    alert('There was a problem with the request.');
-                }
+        $.ajax({
+            url: servletUrl,
+            data: {
+                email: email,
+                fname: fname,
+                lname: lname,
+                username: username,
+                password: password,
+                action: action
             }
-        }
+        }).done(function(data) {
+            if (data == 'done') {
+                window.location = "login.jsp";
+            } else {
+                alert("Please try again!");
+            }
+        }).error(function(e) {
+            alert('There was a problem with the request.');
+        });
     }
 
     $("#submit").click(function(){
         doSubmit();
+        return false;
     });
 
 });

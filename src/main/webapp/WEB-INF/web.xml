@@ -48,7 +48,4 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <listener>
-        <listener-class>com.stat.store.schedule.JobListener</listener-class>
-    </listener>
 </web-app>

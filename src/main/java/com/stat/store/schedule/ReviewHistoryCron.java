@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by longnguyen on 4/18/15.
  */
-public class ReviewHistoryCron implements Job{
+public class ReviewHistoryCron implements Job {
     AndroidService androidService;
     AppleService appleService;
     AndroidHistoryService androidHistoryService;
